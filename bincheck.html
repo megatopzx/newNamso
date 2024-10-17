@@ -1,0 +1,595 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./iconapp.png" />
+    <title>BIN Check - NamsoGen Toolkit</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EN0DRPF9Q7"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-EN0DRPF9Q7");
+    </script>
+    <meta
+      name="description"
+      content="Our BIN Check tool helps you verify Bank Identification Numbers quickly and securely. Validate credit card BIN numbers for fraud prevention and secure transactions with ease."
+    />
+    <meta
+      name="keywords"
+      content="BIN check, BIN checker, BIN lookup, BIN validation, credit card BIN, verify BIN, credit card fraud prevention, mastercard, visa, amex, discover"
+    />
+    <meta name="author" content="megatopx" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="BIN Check - Verify Credit Card BIN Numbers"
+    />
+    <meta
+      property="og:description"
+      content="Use our BIN Check tool to validate Bank Identification Numbers and prevent credit card fraud. Secure, fast, and free."
+    />
+    <meta property="og:image" content="./iconapp.png" />
+    <meta property="og:url" content="https://namsogen.top/" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="BIN Check - Verify Credit Card BIN Numbers"
+    />
+    <meta
+      name="twitter:description"
+      content="Use our BIN Check tool to validate Bank Identification Numbers and prevent credit card fraud. Secure, fast, and free."
+    />
+    <meta name="twitter:image" content="./iconapp.png" />
+    <style>
+      :root {
+        --neon-green: #39ff14;
+        --dark-bg: #0a0a0a;
+        --light-text: #f0f0f0;
+      }
+
+      body {
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+        font-family: "Courier New", monospace;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        background: linear-gradient(45deg, #000, #111);
+        padding: 20px 0;
+        text-align: center;
+        border-bottom: 2px solid var(--neon-green);
+      }
+
+      h1 {
+        font-size: 3em;
+        margin: 0;
+        text-shadow: 0 0 10px var(--neon-green);
+      }
+
+      nav {
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 10px 0;
+      }
+
+      nav ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      nav ul li {
+        margin: 0 15px;
+      }
+
+      nav ul li a {
+        color: var(--light-text);
+        text-decoration: none;
+        font-size: 1.2em;
+        transition: color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: var(--neon-green);
+      }
+
+      .tool-section {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 30px;
+        border: 1px solid var(--neon-green);
+        box-shadow: 0 0 10px var(--neon-green);
+      }
+
+      h2 {
+        color: var(--neon-green);
+        border-bottom: 2px solid var(--neon-green);
+        padding-bottom: 10px;
+      }
+
+      input,
+      select,
+      button {
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+        border: 1px solid var(--neon-green);
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: var(--neon-green);
+        color: var(--dark-bg);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        background-color: var(--dark-bg);
+        color: var(--neon-green);
+      }
+
+      .bin-check-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .bin-input-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .progress-bar {
+        height: 5px;
+        background-color: var(--neon-green);
+        width: 0;
+        transition: width 0.3s ease;
+        visibility: hidden;
+      }
+
+      .result-container {
+        background-color: rgba(0, 0, 0, 0.5);
+        border: 1px solid var(--neon-green);
+        padding: 10px;
+        border-radius: 5px;
+        min-height: 100px;
+      }
+
+      .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .styled-table th,
+      .styled-table td {
+        border: 1px solid var(--neon-green);
+        padding: 8px;
+        text-align: left;
+      }
+
+      .styled-table th {
+        background-color: rgba(57, 255, 20, 0.1);
+      }
+
+      .copy-container {
+        text-align: right;
+        margin-bottom: 10px;
+      }
+
+      .copy-btn {
+        background-color: var(--neon-green);
+        color: var(--dark-bg);
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 3px;
+      }
+
+      .copy-btn:hover {
+        background-color: var(--dark-bg);
+        color: var(--neon-green);
+        border: 1px solid var(--neon-green);
+      }
+
+      @media (min-width: 768px) {
+        .bin-check-container {
+          flex-direction: row;
+        }
+
+        .bin-input-container,
+        .bin-result-container {
+          width: 50%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+          display: none;
+        }
+
+        nav ul li {
+          margin: 10px 0;
+        }
+
+        .menu-icon {
+          display: block;
+          font-size: 2em;
+          color: var(--neon-green);
+          cursor: pointer;
+        }
+
+        nav ul.show {
+          display: flex;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .menu-icon {
+          display: none;
+        }
+
+        nav ul {
+          display: flex !important;
+        }
+      }
+
+      footer {
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 50px;
+        border-top: 2px solid var(--neon-green);
+      }
+
+      footer a {
+        color: var(--neon-green);
+        text-decoration: none;
+      }
+
+      .hacker-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .lightning {
+        position: absolute;
+        background: var(--neon-green);
+        opacity: 0;
+      }
+
+      .skull {
+        position: absolute;
+        font-size: 20px;
+        color: var(--neon-green);
+        opacity: 0;
+      }
+
+      @keyframes lightning {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.8;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes skull {
+        0% {
+          opacity: 0;
+          transform: translateY(0);
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+      }
+
+      .article-section {
+        margin-top: 30px;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 20px;
+        border: 1px solid var(--neon-green);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hacker-animation" id="hackerAnimation"></div>
+    <header>
+      <h1>BIN Check</h1>
+    </header>
+
+    <nav>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <ul>
+        <li><a href="./index.html#generator">NamsoGen</a></li>
+        <li><a href="#bincheck">BIN Check</a></li>
+        <li>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.ciiplo.tools"
+            target="_blank"
+            >App Android</a
+          >
+        </li>
+        <li>
+          <a href="https://t.me/ccgen_namsogen" target="_blank"
+            >Telegram Channel</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <section id="bincheck" class="tool-section">
+        <h2>CHECK BIN - Bank Identification Number</h2>
+        <p>
+          Explore our advanced BIN checker tool, designed to instantly provide
+          accurate information about BIN numbers. Perfect for developers,
+          testers, and security professionals who need to validate and analyze
+          card information securely and efficiently.
+        </p>
+        <form id="binForm" autocomplete="off">
+          <div class="bin-check-container">
+            <div class="bin-input-container">
+              <input
+                type="text"
+                id="main_generator_bin"
+                name="main_generator[bin]"
+                placeholder="Enter BIN"
+                maxlength="6"
+                pattern="\d*"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 6);"
+              />
+              <button type="submit" id="main_generator_generate">CHECK</button>
+              <div
+                class="g-recaptcha"
+                data-sitekey="6LcVJKsaAAAAAL8VESnYXmfjM3vsGGv2vEh2YdVk"
+              ></div>
+            </div>
+            <div class="bin-result-container">
+              <div id="progressBar" class="progress-bar"></div>
+              <div id="results" class="result-container">
+                The results will be displayed here.
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section class="article-section">
+        <h2>Understanding BIN Numbers</h2>
+        <p>
+          A Bank Identification Number (BIN) is the first 6 digits of a credit
+          or debit card number. These digits play a crucial role in identifying
+          the issuing institution of the card. BIN numbers are essential for
+          various financial processes and are used by merchants, payment
+          processors, and financial institutions to validate transactions and
+          assess risk.
+        </p>
+        <h3>Key Information Provided by BIN Numbers:</h3>
+        <ul>
+          <li>
+            Issuing Bank: Identifies the financial institution that issued the
+            card.
+          </li>
+          <li>
+            Card Brand: Indicates whether the card is Visa, Mastercard, American
+            Express, etc.
+          </li>
+          <li>
+            Card Type: Specifies if it's a credit, debit, or prepaid card.
+          </li>
+          <li>
+            Card Level: Reveals if it's a standard, gold, platinum, or business
+            card.
+          </li>
+          <li>
+            Country of Issuance: Shows which country the card was issued in.
+          </li>
+        </ul>
+        <p>
+          Our BIN checker tool provides a quick and efficient way to retrieve
+          this information, making it an invaluable resource for developers,
+          fraud prevention specialists, and financial professionals. Remember,
+          while BIN checking is a useful tool, it should always be used
+          responsibly and ethically, respecting privacy laws and regulations.
+        </p>
+      </section>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2024 Namsogen Toolkit. All rights reserved. |
+        <a href="./privacypolicy.html">Privacy Policy</a>
+      </p>
+    </footer>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+      function toggleMenu() {
+        const menu = document.querySelector("nav ul");
+        menu.classList.toggle("show");
+      }
+
+      document
+        .getElementById("binForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          let bin = document.getElementById("main_generator_bin").value.trim();
+          const recaptchaResponse = grecaptcha.getResponse();
+
+          if (bin.length < 6) {
+            alert("THE BIN MUST HAVE EXACTLY 6 DIGITS.");
+            return;
+          }
+
+          bin = bin.substring(0, 6);
+
+          if (!recaptchaResponse) {
+            alert("PLEASE SOLVE THE RECAPTCHA.");
+            return;
+          }
+
+          document.getElementById("progressBar").style.width = "100%";
+          document.getElementById("progressBar").style.visibility = "visible";
+
+          const xhr = new XMLHttpRequest();
+          xhr.open(
+            "POST",
+            "https://cyberkit.one/script_tools/namso_net_bin.php",
+            true
+          );
+          xhr.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+          );
+
+          xhr.onload = function () {
+            document.getElementById("progressBar").style.visibility = "hidden";
+
+            if (xhr.status === 200) {
+              try {
+                const response = JSON.parse(xhr.responseText);
+
+                if (
+                  response.cardInfo &&
+                  response.cardCategory &&
+                  response.cardBrand
+                ) {
+                  document.getElementById("results").innerHTML = formatResult(
+                    response,
+                    bin
+                  );
+                } else {
+                  alert("ERROR PROCESSING SERVER RESPONSE.");
+                }
+              } catch (e) {
+                alert("BIN NOT FOUND.");
+              }
+            } else {
+              alert("ERROR QUERYING BIN.");
+            }
+
+            grecaptcha.reset();
+          };
+
+          xhr.send(`bin=${bin}&g-recaptcha-response=${recaptchaResponse}`);
+        });
+
+      function formatResult(data, bin) {
+        const { cardInfo, cardCategory, cardBrand, bankName } = data;
+        return `
+      <div class="copy-container">
+        <button type="button" class="copy-btn" onclick="copyResults()">COPY</button>
+      </div>
+      <table class="styled-table">
+        <tr><th>BIN</th><td>${bin}</td></tr>
+        <tr><th>COUNTRY</th><td>${cardInfo.country.toUpperCase()}</td></tr>
+        <tr><th>CARD TYPE</th><td>${cardInfo.cardType.toUpperCase()}</td></tr>
+        <tr><th>CATEGORY</th><td>${cardCategory.toUpperCase()}</td></tr>
+        <tr><th>BRAND</th><td>${cardBrand.toUpperCase()}</td></tr>
+        <tr><th>BANK</th><td>${(
+          bankName || "NOT PROVIDED"
+        ).toUpperCase()}</td></tr>
+      </table>`;
+      }
+
+      function copyResults() {
+        const results = document.getElementById("results").innerText;
+        navigator.clipboard.writeText(results).then(() => {
+          alert("RESULTS COPIED TO CLIPBOARD.");
+        });
+      }
+
+      function createLightning() {
+        const lightning = document.createElement("div");
+        lightning.className = "lightning";
+        lightning.style.width = `${Math.random() * 2 + 1}px`;
+        lightning.style.height = `${Math.random() * 200 + 100}px`;
+        lightning.style.left = `${Math.random() * 100}%`;
+        lightning.style.top = `${Math.random() * 100}%`;
+        lightning.style.transform = `rotate(${Math.random() * 360}deg)`;
+        lightning.style.animation = `lightning ${
+          Math.random() * 1 + 0.5
+        }s linear`;
+        return lightning;
+      }
+
+      function createSkull() {
+        const skull = document.createElement("div");
+        skull.className = "skull";
+        skull.innerHTML = "💀";
+        skull.style.left = `${Math.random() * 100}%`;
+        skull.style.top = `${Math.random() * 100}%`;
+        skull.style.animation = `skull ${Math.random() * 2 + 1}s linear`;
+        return skull;
+      }
+
+      function animateHackerBackground() {
+        const hackerAnimation = document.getElementById("hackerAnimation");
+
+        setInterval(() => {
+          const lightning = createLightning();
+          hackerAnimation.appendChild(lightning);
+          setTimeout(() => {
+            hackerAnimation.removeChild(lightning);
+          }, 1000);
+        }, 200);
+
+        setInterval(() => {
+          const skull = createSkull();
+          hackerAnimation.appendChild(skull);
+          setTimeout(() => {
+            hackerAnimation.removeChild(skull);
+          }, 2000);
+        }, 1000);
+      }
+
+      animateHackerBackground();
+    </script>
+  </body>
+</html>

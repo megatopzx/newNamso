@@ -1,0 +1,762 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./iconapp.png" />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EN0DRPF9Q7"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-EN0DRPF9Q7");
+    </script>
+    <meta
+      name="description"
+      content="NamsoGen is a random test credit card number generator based on your own BIN pattern. Generate credit card numbers for testing purposes with ease."
+    />
+    <meta
+      name="keywords"
+      content="ccgen, credit card generator, generator, cc, bin, credit, mastercard, visa, amex, discover, namso gen, namso gen.com, namsogen"
+    />
+    <meta name="author" content="megatopx" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Namso Gen - Credit Cards Generator" />
+    <meta
+      property="og:description"
+      content="NamsoGen is a random test credit card number generator based on your own BIN pattern. Generate credit card numbers for testing purposes with ease."
+    />
+    <meta property="og:image" content="./iconapp.png" />
+    <meta property="og:url" content="https://namsogen.top" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Namso Gen - Credit Cards Generator" />
+    <meta
+      name="twitter:description"
+      content="NamsoGen is a random test credit card number generator based on your own BIN pattern. Generate credit card numbers for testing purposes with ease."
+    />
+    <meta name="twitter:image" content="./iconapp.png" />
+
+    <title>NamsoGen Toolkit</title>
+    <style>
+      :root {
+        --neon-green: #39ff14;
+        --dark-bg: #0a0a0a;
+        --light-text: #f0f0f0;
+      }
+
+      body {
+        background: linear-gradient(
+            0deg,
+            rgba(10, 10, 10, 0.9) 0%,
+            rgba(10, 10, 10, 0.95) 100%
+          ),
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="0" y="20" font-family="monospace" font-size="20" fill="rgba(57, 255, 20, 0.1)">01</text></svg>');
+        background-size: cover, 100px 100px;
+        animation: matrixBackground 20s linear infinite;
+        color: var(--light-text);
+        font-family: "Courier New", monospace;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      @keyframes matrixBackground {
+        0% {
+          background-position: 0% 0%;
+        }
+        100% {
+          background-position: 0% 100%;
+        }
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        background: linear-gradient(45deg, #000, #111);
+        padding: 20px 0;
+        text-align: center;
+        border-bottom: 2px solid var(--neon-green);
+      }
+
+      h1 {
+        font-size: 3em;
+        margin: 0;
+        text-shadow: 0 0 10px var(--neon-green);
+        animation: glitch 1s infinite;
+      }
+
+      @keyframes glitch {
+        0% {
+          text-shadow: 0.05em 0 0 var(--neon-green), -0.05em -0.025em 0 #ff00ff,
+            -0.025em 0.05em 0 #00ffff;
+        }
+        14% {
+          text-shadow: 0.05em 0 0 var(--neon-green), -0.05em -0.025em 0 #ff00ff,
+            -0.025em 0.05em 0 #00ffff;
+        }
+        15% {
+          text-shadow: -0.05em -0.025em 0 var(--neon-green),
+            0.025em 0.025em 0 #ff00ff, -0.05em -0.05em 0 #00ffff;
+        }
+        49% {
+          text-shadow: -0.05em -0.025em 0 var(--neon-green),
+            0.025em 0.025em 0 #ff00ff, -0.05em -0.05em 0 #00ffff;
+        }
+        50% {
+          text-shadow: 0.025em 0.05em 0 var(--neon-green), 0.05em 0 0 #ff00ff,
+            0 -0.05em 0 #00ffff;
+        }
+        99% {
+          text-shadow: 0.025em 0.05em 0 var(--neon-green), 0.05em 0 0 #ff00ff,
+            0 -0.05em 0 #00ffff;
+        }
+        100% {
+          text-shadow: -0.025em 0 0 var(--neon-green),
+            -0.025em -0.025em 0 #ff00ff, -0.025em -0.05em 0 #00ffff;
+        }
+      }
+
+      nav {
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 10px 0;
+      }
+
+      nav ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      nav ul li {
+        margin: 0 15px;
+      }
+
+      nav ul li a {
+        color: var(--light-text);
+        text-decoration: none;
+        font-size: 1.2em;
+        transition: color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: var(--neon-green);
+      }
+
+      .tool-section {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 30px;
+        border: 1px solid var(--neon-green);
+        box-shadow: 0 0 10px var(--neon-green);
+        animation: borderPulse 2s infinite;
+      }
+
+      @keyframes borderPulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(57, 255, 20, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(57, 255, 20, 0);
+        }
+      }
+
+      h2 {
+        color: var(--neon-green);
+        border-bottom: 2px solid var(--neon-green);
+        padding-bottom: 10px;
+      }
+
+      input,
+      select,
+      button {
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+        border: 1px solid var(--neon-green);
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: var(--neon-green);
+        color: var(--dark-bg);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        background-color: var(--dark-bg);
+        color: var(--neon-green);
+      }
+
+      textarea {
+        width: 100%;
+        height: 200px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: var(--light-text);
+        border: 1px solid var(--neon-green);
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      footer {
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+        text-align: center;
+        padding: 20px 0;
+        border-top: 2px solid var(--neon-green);
+      }
+
+      footer a {
+        color: var(--neon-green);
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      .menu-icon {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        nav ul li {
+          margin: 10px 0;
+        }
+
+        .menu-icon {
+          display: block;
+          font-size: 2em;
+          color: var(--neon-green);
+          cursor: pointer;
+        }
+
+        nav ul {
+          display: none;
+        }
+
+        nav ul.show {
+          display: flex;
+        }
+      }
+
+      .article-section {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 30px;
+        border: 1px solid var(--neon-green);
+        box-shadow: 0 0 10px var(--neon-green);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .article-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          0deg,
+          rgba(57, 255, 20, 0.1) 25%,
+          transparent 25%
+        );
+        background-size: 0.5em 0.5em;
+        animation: scan 5s linear infinite;
+        z-index: 1;
+      }
+
+      .article-section h2 {
+        color: var(--neon-green);
+        border-bottom: 2px solid var(--neon-green);
+        padding-bottom: 10px;
+      }
+
+      .article-section p,
+      .article-section ul {
+        margin-bottom: 20px;
+      }
+
+      .article-section ul {
+        list-style-type: none;
+        padding-left: 20px;
+      }
+
+      .article-section ul li::before {
+        content: "•";
+        color: var(--neon-green);
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          display: none;
+        }
+
+        nav ul.show {
+          display: flex;
+        }
+      }
+
+      .hacker-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .hacker-animation::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        right: -50%;
+        bottom: -50%;
+        background: linear-gradient(
+          to bottom,
+          rgba(57, 255, 20, 0) 0%,
+          rgba(57, 255, 20, 0.2) 50%,
+          rgba(57, 255, 20, 0) 100%
+        );
+        background-size: 10px 100%;
+        animation: lightning 2s linear infinite;
+      }
+
+      @keyframes lightning {
+        0% {
+          transform: translateY(-100%) skewX(-45deg);
+        }
+        100% {
+          transform: translateY(100%) skewX(-45deg);
+        }
+      }
+
+      .skull {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        fill: var(--neon-green);
+        opacity: 0.5;
+        animation: float 3s ease-in-out infinite;
+        z-index: 1;
+      }
+
+      .skull:nth-child(1) {
+        top: 10%;
+        left: 5%;
+      }
+      .skull:nth-child(2) {
+        top: 30%;
+        right: 5%;
+      }
+      .skull:nth-child(3) {
+        bottom: 20%;
+        left: 10%;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hacker-animation"></div>
+    <header>
+      <h1>Namso Gen Toolkit</h1>
+    </header>
+
+    <nav>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <ul>
+        <li><a href="#generator">NamsoGen</a></li>
+        <li><a href="./bincheck.html#bincheck">BIN Check</a></li>
+        <li>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.ciiplo.tools"
+            target="_blank"
+            >App Android</a
+          >
+        </li>
+        <li>
+          <a href="https://t.me/ccgen_namsogen" target="_blank"
+            >Telegram Channel</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <section id="generator" class="tool-section">
+        <h2>Credit Card Generator</h2>
+        <form id="cc-form">
+          <input type="text" id="bin" placeholder="Enter BIN (e.g. 4xxxxx)" />
+          <select id="month">
+            <option value="Random">Random Month</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <select id="year">
+            <option value="Random">Random Year</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+            <option value="2031">2031</option>
+            <option value="2032">2032</option>
+            <option value="2033">2033</option>
+            <option value="2034">2034</option>
+            <option value="2035">2035</option>
+            <option value="2036">2036</option>
+            <option value="2037">2037</option>
+            <option value="2038">2038</option>
+            <option value="2039">2039</option>
+            <option value="2040">2040</option>
+          </select>
+          <input type="text" id="ccv" placeholder="CCV (Random if empty)" />
+          <input
+            type="number"
+            id="count"
+            placeholder="Quantity (default: 20)"
+          />
+          <button type="button" onclick="generate()">Generate</button>
+        </form>
+        <textarea id="output" readonly></textarea>
+        <button onclick="copyToClipboard()">Copy to Clipboard</button>
+      </section>
+
+      <div class="article-section">
+        <svg class="skull" viewBox="0 0 24 24">
+          <path
+            d="M12 2C6.477 2 2 6.477 2 12c0 3.686 2.13 6.873 5.22 8.45.3.15.78.03.98-.25l1.88-2.89c.14-.22.39-.35.65-.35h2.54c.26 0 .51.13.65.35l1.88 2.89c.2.28.68.4.98.25C19.87 18.873 22 15.686 22 12c0-5.523-4.477-10-10-10zm-2 14h-2v-2h2v2zm3 0h-2v-2h2v2zm3 0h-2v-2h2v2z"
+          />
+        </svg>
+        <svg class="skull" viewBox="0 0 24 24">
+          <path
+            d="M12 2C6.477 2 2 6.477 2 12c0 3.686 2.13 6.873 5.22 8.45.3.15.78.03.98-.25l1.88-2.89c.14-.22.39-.35.65-.35h2.54c.26 0 .51.13.65.35l1.88 2.89c.2.28.68.4.98.25C19.87 18.873 22 15.686 22 12c0-5.523-4.477-10-10-10zm-2 14h-2v-2h2v2zm3 0h-2v-2h2v2zm3 0h-2v-2h2v2z"
+          />
+        </svg>
+        <svg class="skull" viewBox="0 0 24 24">
+          <path
+            d="M12 2C6.477 2 2 6.477 2 12c0 3.686 2.13 6.873 5.22 8.45.3.15.78.03.98-.25l1.88-2.89c.14-.22.39-.35.65-.35h2.54c.26 0 .51.13.65.35l1.88 2.89c.2.28.68.4.98.25C19.87 18.873 22 15.686 22 12c0-5.523-4.477-10-10-10zm-2 14h-2v-2h2v2zm3 0h-2v-2h2v2zm3 0h-2v-2h2v2z"
+          />
+        </svg>
+        <h2>Introduction to the "Namso Gen" or "Namsogen" Tool</h2>
+        <p>
+          The "Namso Gen" tool is known for generating credit card numbers for
+          testing purposes. It works by producing valid card numbers based on
+          specific algorithms that include BINs and necessary checks such as
+          Luhn's algorithm.
+        </p>
+        <p>
+          This tool is often used by developers to test payment integration and
+          other financial systems without using real card information.
+        </p>
+
+        <h2>How the Tool Works</h2>
+        <p>
+          The "Namso Gen" tool uses a specific algorithm that generates valid
+          credit card numbers based on the format and rules of real cards, such
+          as the Luhn algorithm. These numbers, while structurally valid, do not
+          have associated funds and therefore cannot be used for real financial
+          transactions.
+        </p>
+
+        <h2>Main Features</h2>
+        <ul>
+          <li>
+            <strong>BIN (Bank Identification Number) Generation</strong>: The
+            tool allows the user to input a specific BIN or generate card
+            numbers based on random BINs. The BIN consists of the first six
+            digits of the card and identifies the issuing institution.
+          </li>
+          <li>
+            <strong>Expiration Date</strong>: The user can select a specific
+            month and year or opt for random values for the card's expiration
+            date.
+          </li>
+          <li>
+            <strong>Security Code (CCV)</strong>: Similar to the expiration
+            date, the security code can be user-defined or randomly generated.
+          </li>
+          <li>
+            <strong>Quantity of Cards</strong>: The tool allows generating
+            multiple card numbers in a single request, according to the user's
+            needs.
+          </li>
+        </ul>
+
+        <h2>Advantages of Using the Tool</h2>
+        <ul>
+          <li>
+            <strong>Security</strong>: Using fictitious numbers avoids the risks
+            associated with using real cards in testing environments.
+          </li>
+          <li>
+            <strong>Ease of Use</strong>: The intuitive interface allows even
+            users with little technical experience to use the tool efficiently.
+          </li>
+          <li>
+            <strong>Flexibility</strong>: The tool offers various options for
+            customizing the generated numbers, meeting diverse testing needs.
+          </li>
+        </ul>
+
+        <p>
+          The "Namso Gen" or "Namsogen" is an essential tool for professionals
+          working with payment systems. It ensures security and efficiency in
+          software development and testing, significantly contributing to the
+          improvement of digital financial services quality.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2024 NamsoGen Toolkit.
+        <a href="./privacypolicy.html">Privacy Policy</a>
+      </p>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.querySelector("nav ul");
+        menu.classList.toggle("show");
+      }
+
+      function generateCard(bin, length) {
+        var bin2 = "";
+        var card = "";
+        var card1_l = [];
+        var card2_l = [];
+        var sum = 0;
+        var mod = 0;
+        var check_sum = 0;
+
+        // Replace 'x' with random digits and limit to length-1
+        for (var i = 0; i < bin.length && bin2.length < length - 1; i++) {
+          var char = bin[i].toLowerCase();
+          if (char == "x") {
+            char = Math.floor(Math.random() * 10);
+          }
+          bin2 += char;
+        }
+
+        // If bin2 is shorter than length-1, append random digits
+        while (bin2.length < length - 1) {
+          bin2 += Math.floor(Math.random() * 10);
+        }
+
+        // Convert bin2 to array of integers
+        for (var i = 0; i < bin2.length; i++) {
+          card1_l.push(parseInt(bin2[i]));
+          card2_l.push(parseInt(bin2[i]));
+        }
+
+        // Double the value of alternate digits starting from the rightmost
+        for (var i = card2_l.length - 1; i >= 0; i -= 2) {
+          card2_l[i] *= 2;
+          if (card2_l[i] > 9) {
+            card2_l[i] -= 9;
+          }
+        }
+
+        // Sum all the digits
+        for (var i in card2_l) {
+          sum += card2_l[i];
+        }
+
+        // Calculate the checksum
+        mod = sum % 10;
+        if (mod != 0) {
+          check_sum = 10 - mod;
+        }
+
+        // Add the checksum to the card number
+        card1_l.push(check_sum);
+
+        // Convert the card number array to a string
+        for (var i in card1_l) {
+          card += card1_l[i];
+        }
+        return card;
+      }
+
+      function generateMonth() {
+        var monthList = [
+          "01",
+          "02",
+          "03",
+          "04",
+          "05",
+          "06",
+          "07",
+          "08",
+          "09",
+          "10",
+          "11",
+          "12",
+        ];
+        return monthList[Math.floor(Math.random() * 12)];
+      }
+
+      function generateYear() {
+        var yearList = [
+          "2024",
+          "2025",
+          "2026",
+          "2027",
+          "2028",
+          "2029",
+          "2030",
+          "2031",
+          "2032",
+          "2033",
+          "2034",
+          "2035",
+          "2036",
+          "2037",
+          "2038",
+          "2039",
+          "2040",
+        ];
+        return yearList[Math.floor(Math.random() * yearList.length)];
+      }
+
+      function generateCCV(bin) {
+        var ccvLength = /^3[47]/.test(bin) ? 4 : 3; // Amex has 4-digit CVV
+        var ccv = "";
+        for (var i = 0; i < ccvLength; i++) {
+          ccv += Math.floor(Math.random() * 10);
+        }
+        return ccv;
+      }
+
+      function generate() {
+        var bin = document.getElementById("bin").value.trim();
+        var ccv = document.getElementById("ccv").value.trim();
+        var month = document.getElementById("month").value;
+        var year = document.getElementById("year").value;
+        var count = parseInt(document.getElementById("count").value.trim());
+        var output = document.getElementById("output");
+
+        if (bin == "") {
+          return;
+        }
+        if (ccv == "") {
+          ccv = "Random";
+        }
+        if (isNaN(count) || count <= 0) {
+          count = 20;
+        }
+
+        var cardLength = 16;
+        // Define length based on card type
+        if (/^3[47]/.test(bin)) {
+          // Amex
+          cardLength = 15;
+        } else if (/^3[0689]/.test(bin)) {
+          // Diners Club
+          cardLength = 14;
+        }
+
+        var cards = "";
+        for (var i = 0; i < count; i++) {
+          var generatedCard = generateCard(bin, cardLength);
+          var generatedMonth = month === "Random" ? generateMonth() : month;
+          var generatedYear = year === "Random" ? generateYear() : year;
+          var generatedCCV = ccv === "Random" ? generateCCV(bin) : ccv;
+          cards += `${generatedCard}|${generatedMonth}|${generatedYear}|${generatedCCV}\n`;
+        }
+        output.value = cards.trim();
+      }
+
+      function toggleTheme() {
+        let body = document.body;
+        body.classList.toggle("dark-mode");
+        body.classList.toggle("light-mode");
+        let icon = document.getElementById("theme-icon");
+        if (body.classList.contains("dark-mode")) {
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+          localStorage.setItem("theme", "dark");
+        } else {
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+          localStorage.setItem("theme", "light");
+        }
+      }
+
+      window.onload = function () {
+        let theme = localStorage.getItem("theme") || "light";
+        document.body.classList.add(theme + "-mode");
+        let icon = document.getElementById("theme-icon");
+        if (theme === "dark") {
+          icon.classList.add("fa-sun");
+        } else {
+          icon.classList.add("fa-moon");
+        }
+      };
+
+      function copyToClipboard() {
+        let textarea = document.getElementById("output");
+        textarea.select();
+        textarea.setSelectionRange(0, 99999); // Para dispositivos móveis
+        document.execCommand("copy");
+        alert("Copied successfully!");
+      }
+    </script>
+  </body>
+</html>
