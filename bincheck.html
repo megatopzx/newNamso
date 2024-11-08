@@ -674,33 +674,36 @@
         });
 
       function formatResult(data, bin) {
-        const { cardInfo } = data;
+        const cardInfo = data.cardInfo || {};
+
         return `
-      <div class="copy-container">
-        <button type="button" class="copy-btn" onclick="copyResults()">COPY</button>
-      </div>
-      <table class="styled-table">
-        <tr><th>BIN</th><td>${bin}</td></tr>
-        <tr><th>COUNTRY</th><td>${
-          cardInfo.country ? cardInfo.country.toUpperCase() : "NO INFORMATION"
-        }</td></tr>
-        <tr><th>CARD TYPE</th><td>${
-          cardInfo.cardType ? cardInfo.cardType.toUpperCase() : "NO INFORMATION"
-        }</td></tr>
-        <tr><th>CATEGORY</th><td>${
-          cardInfo.cardCategory
-            ? cardInfo.cardCategory.toUpperCase()
-            : "NO INFORMATION"
-        }</td></tr>
-        <tr><th>BRAND</th><td>${
-          cardInfo.cardBrand
-            ? cardInfo.cardBrand.toUpperCase()
-            : "NO INFORMATION"
-        }</td></tr>
-        <tr><th>BANK</th><td>${
-          cardInfo.bankName ? cardInfo.bankName.toUpperCase() : "NOT PROVIDED"
-        }</td></tr>
-      </table>`;
+        <div class="copy-container">
+          <button type="button" class="copy-btn" onclick="copyResults()">COPY</button>
+        </div>
+        <table class="styled-table">
+          <tr><th>BIN</th><td>${bin}</td></tr>
+          <tr><th>COUNTRY</th><td>${
+            cardInfo.country ? cardInfo.country.toUpperCase() : "NO INFORMATION"
+          }</td></tr>
+          <tr><th>CARD TYPE</th><td>${
+            cardInfo.cardType
+              ? cardInfo.cardType.toUpperCase()
+              : "NO INFORMATION"
+          }</td></tr>
+          <tr><th>CATEGORY</th><td>${
+            cardInfo.cardCategory
+              ? cardInfo.cardCategory.toUpperCase()
+              : "NO INFORMATION"
+          }</td></tr>
+          <tr><th>BRAND</th><td>${
+            cardInfo.cardBrand
+              ? cardInfo.cardBrand.toUpperCase()
+              : "NO INFORMATION"
+          }</td></tr>
+          <tr><th>BANK</th><td>${
+            cardInfo.bankName ? cardInfo.bankName.toUpperCase() : "NOT PROVIDED"
+          }</td></tr>
+        </table>`;
       }
 
       function copyResults() {
