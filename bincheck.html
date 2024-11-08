@@ -495,27 +495,20 @@
               try {
                 const response = JSON.parse(xhr.responseText);
 
-                // Log da resposta para depuração
-                console.log("Server Response:", response);
-
-                // Verifica se qualquer campo importante contém "No information"
                 if (
-                  response.cardInfo.bankName !== "No information" &&
-                  response.cardInfo.cardBrand !== "No information" &&
-                  response.cardInfo.cardCategory !== "No information"
+                  response.cardInfo &&
+                  response.cardCategory &&
+                  response.cardBrand
                 ) {
-                  // Exibe os dados normalmente
                   document.getElementById("results").innerHTML = formatResult(
                     response,
                     bin
                   );
                 } else {
-                  // Se algum campo for "No information", mostra a mensagem de não encontrado
-                  alert("BIN NOT FOUND.");
+                  alert("ERROR PROCESSING SERVER RESPONSE.");
                 }
               } catch (e) {
-                console.error("JSON Parsing Error:", e);
-                alert("ERROR PROCESSING SERVER RESPONSE.");
+                alert("BIN NOT FOUND.");
               }
             } else {
               alert("ERROR QUERYING BIN.");
