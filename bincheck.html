@@ -494,26 +494,31 @@
             if (xhr.status === 200) {
               try {
                 const response = JSON.parse(xhr.responseText);
-                ///
-                // Verifica se os campos obrigatórios estão presentes e não vazios
+
+                // Log da resposta para depuração
+                console.log("Server Response:", response);
+
+                // Verifica se qualquer campo importante contém "No information"
                 if (
-                  response.cardInfo &&
-                  response.cardInfo.bankName &&
-                  response.cardInfo.cardBrand &&
-                  response.cardInfo.cardCategory
+                  response.cardInfo.bankName !== "No information" &&
+                  response.cardInfo.cardBrand !== "No information" &&
+                  response.cardInfo.cardCategory !== "No information"
                 ) {
+                  // Exibe os dados normalmente
                   document.getElementById("results").innerHTML = formatResult(
                     response,
                     bin
                   );
                 } else {
-                  alert("INFORMATION NOT FOUND."); // Alerta para resposta sem informações
+                  // Se algum campo for "No information", mostra a mensagem de não encontrado
+                  alert("BIN NOT FOUND.");
                 }
               } catch (e) {
-                alert("ERROR PROCESSING SERVER RESPONSE."); // Alerta para erro na resposta do servidor
+                console.error("JSON Parsing Error:", e);
+                alert("ERROR PROCESSING SERVER RESPONSE.");
               }
             } else {
-              alert("ERROR QUERYING BIN."); // Alerta para erro ao consultar o BIN
+              alert("ERROR QUERYING BIN.");
             }
 
             grecaptcha.reset();
