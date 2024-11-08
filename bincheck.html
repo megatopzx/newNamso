@@ -495,23 +495,25 @@
               try {
                 const response = JSON.parse(xhr.responseText);
 
+                // Verifica se os campos obrigatórios estão presentes e não vazios
                 if (
                   response.cardInfo &&
-                  response.cardCategory &&
-                  response.cardBrand
+                  response.cardInfo.bankName &&
+                  response.cardInfo.cardBrand &&
+                  response.cardInfo.cardCategory
                 ) {
                   document.getElementById("results").innerHTML = formatResult(
                     response,
                     bin
                   );
                 } else {
-                  alert("ERROR PROCESSING SERVER RESPONSE.");
+                  alert("INFORMATION NOT FOUND."); // Alerta para resposta sem informações
                 }
               } catch (e) {
-                alert("BIN NOT FOUND.");
+                alert("ERROR PROCESSING SERVER RESPONSE."); // Alerta para erro na resposta do servidor
               }
             } else {
-              alert("ERROR QUERYING BIN.");
+              alert("ERROR QUERYING BIN."); // Alerta para erro ao consultar o BIN
             }
 
             grecaptcha.reset();
