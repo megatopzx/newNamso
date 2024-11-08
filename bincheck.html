@@ -495,11 +495,7 @@
               try {
                 const response = JSON.parse(xhr.responseText);
 
-                if (
-                  response.cardInfo &&
-                  response.cardCategory &&
-                  response.cardBrand
-                ) {
+                if (response.cardInfo) {
                   document.getElementById("results").innerHTML = formatResult(
                     response,
                     bin
@@ -521,20 +517,189 @@
         });
 
       function formatResult(data, bin) {
-        const { cardInfo, cardCategory, cardBrand, bankName } = data;
+        const { cardInfo } = data;
+        return `
+          <div class="copy-container">
+            <button type="button" class="copy-btn" onclick="copyResults()">COPY</button>
+          </div>
+          <table class="styled-table">
+            <tr><th>BIN</th><td>${bin}</td></tr>
+            <tr><th>COUNTRY</th><td>${
+              cardInfo.country
+                ? cardInfo.country.toUpperCase()
+                : "NO INFORMATION"
+            }</td></tr>
+            <tr><th>CARD TYPE</th><td>${
+              cardInfo.cardType
+                ? cardInfo.cardType.toUpperCase()
+                : "NO INFORMATION"
+            }</td></tr>
+            <tr><th>CATEGORY</th><td>${
+              cardInfo.cardCategory
+                ? cardInfo.cardCategory.toUpperCase()
+                : "NO INFORMATION"
+            }</td></tr>
+            <tr><th>BRAND</th><td>${
+              cardInfo.cardBrand
+                ? cardInfo.cardBrand.toUpperCase()
+                : "NO INFORMATION"
+            }</td></tr>
+            <tr><th>BANK</th><td>${
+              cardInfo.bankName
+                ? cardInfo.bankName.toUpperCase()
+                : "NOT PROVIDED"
+            }</td></tr>
+          </table>`;
+      }
+
+      function copyResults() {
+        const results = document.getElementById("results").innerText;
+        navigator.clipboard.writeText(results).then(() => {
+          alert("RESULTS COPIED TO CLIPBOARD.");
+        });
+      }
+
+      function createLightning() {
+        const lightning = document.createElement("div");
+        lightning.className = "lightning";
+        lightning.style.width = `${Math.random() * 2 + 1}px`;
+        lightning.style.height = `${Math.random() * 200 + 100}px`;
+        lightning.style.left = `${Math.random() * 100}%`;
+        lightning.style.top = `${Math.random() * 100}%`;
+        lightning.style.transform = `rotate(${Math.random() * 360}deg)`;
+        lightning.style.animation = `lightning ${
+          Math.random() * 1 + 0.5
+        }s linear`;
+        return lightning;
+      }
+
+      function createSkull() {
+        const skull = document.createElement("div");
+        skull.className = "skull";
+        skull.innerHTML = "💀";
+        skull.style.left = `${Math.random() * 100}%`;
+        skull.style.top = `${Math.random() * 100}%`;
+        skull.style.animation = `skull ${Math.random() * 2 + 1}s linear`;
+        return skull;
+      }
+
+      function animateHackerBackground() {
+        const hackerAnimation = document.getElementById("hackerAnimation");
+
+        setInterval(() => {
+          const lightning = createLightning();
+          hackerAnimation.appendChild(lightning);
+          setTimeout(() => {
+            lightning.remove();
+          }, 1000);
+        }, 200);
+
+        setInterval(() => {
+          const skull = createSkull();
+          hackerAnimation.appendChild(skull);
+          setTimeout(() => {
+            skull.remove();
+          }, 2000);
+        }, 1000);
+      }
+
+      animateHackerBackground();
+    </script>
+    <script>
+      function toggleMenu() {
+        const menu = document.querySelector("nav ul");
+        menu.classList.toggle("show");
+      }
+
+      document
+        .getElementById("binForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          let bin = document.getElementById("main_generator_bin").value.trim();
+          const recaptchaResponse = grecaptcha.getResponse();
+
+          if (bin.length < 6) {
+            alert("THE BIN MUST HAVE EXACTLY 6 DIGITS.");
+            return;
+          }
+
+          bin = bin.substring(0, 6);
+
+          if (!recaptchaResponse) {
+            alert("PLEASE SOLVE THE RECAPTCHA.");
+            return;
+          }
+
+          document.getElementById("progressBar").style.width = "100%";
+          document.getElementById("progressBar").style.visibility = "visible";
+
+          const xhr = new XMLHttpRequest();
+          xhr.open(
+            "POST",
+            "https://cyberkit.one/script_tools/namso_net_bin.php",
+            true
+          );
+          xhr.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+          );
+
+          xhr.onload = function () {
+            document.getElementById("progressBar").style.visibility = "hidden";
+
+            if (xhr.status === 200) {
+              try {
+                const response = JSON.parse(xhr.responseText);
+
+                if (response.cardInfo) {
+                  document.getElementById("results").innerHTML = formatResult(
+                    response,
+                    bin
+                  );
+                } else {
+                  alert("ERROR PROCESSING SERVER RESPONSE.");
+                }
+              } catch (e) {
+                alert("BIN NOT FOUND.");
+              }
+            } else {
+              alert("ERROR QUERYING BIN.");
+            }
+
+            grecaptcha.reset();
+          };
+
+          xhr.send(`bin=${bin}&g-recaptcha-response=${recaptchaResponse}`);
+        });
+
+      function formatResult(data, bin) {
+        const { cardInfo } = data;
         return `
       <div class="copy-container">
         <button type="button" class="copy-btn" onclick="copyResults()">COPY</button>
       </div>
       <table class="styled-table">
         <tr><th>BIN</th><td>${bin}</td></tr>
-        <tr><th>COUNTRY</th><td>${cardInfo.country.toUpperCase()}</td></tr>
-        <tr><th>CARD TYPE</th><td>${cardInfo.cardType.toUpperCase()}</td></tr>
-        <tr><th>CATEGORY</th><td>${cardCategory.toUpperCase()}</td></tr>
-        <tr><th>BRAND</th><td>${cardBrand.toUpperCase()}</td></tr>
-        <tr><th>BANK</th><td>${(
-          bankName || "NOT PROVIDED"
-        ).toUpperCase()}</td></tr>
+        <tr><th>COUNTRY</th><td>${
+          cardInfo.country ? cardInfo.country.toUpperCase() : "NO INFORMATION"
+        }</td></tr>
+        <tr><th>CARD TYPE</th><td>${
+          cardInfo.cardType ? cardInfo.cardType.toUpperCase() : "NO INFORMATION"
+        }</td></tr>
+        <tr><th>CATEGORY</th><td>${
+          cardInfo.cardCategory
+            ? cardInfo.cardCategory.toUpperCase()
+            : "NO INFORMATION"
+        }</td></tr>
+        <tr><th>BRAND</th><td>${
+          cardInfo.cardBrand
+            ? cardInfo.cardBrand.toUpperCase()
+            : "NO INFORMATION"
+        }</td></tr>
+        <tr><th>BANK</th><td>${
+          cardInfo.bankName ? cardInfo.bankName.toUpperCase() : "NOT PROVIDED"
+        }</td></tr>
       </table>`;
       }
 
@@ -576,7 +741,7 @@
           const lightning = createLightning();
           hackerAnimation.appendChild(lightning);
           setTimeout(() => {
-            hackerAnimation.removeChild(lightning);
+            lightning.remove();
           }, 1000);
         }, 200);
 
@@ -584,7 +749,7 @@
           const skull = createSkull();
           hackerAnimation.appendChild(skull);
           setTimeout(() => {
-            hackerAnimation.removeChild(skull);
+            skull.remove();
           }, 2000);
         }, 1000);
       }
