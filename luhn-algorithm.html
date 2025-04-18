@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luhn Algorithm: Understanding Credit Card Validation</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- SEO and Social Media Meta Tags -->
+  <meta name="description" content="Explore the Luhn Algorithm: The mathematical formula behind credit card number validation used by major financial institutions.">
+  <meta name="keywords" content="Luhn Algorithm, credit card validation, MOD 10, checksum algorithm, financial security">
+  
+  <meta property="og:title" content="Luhn Algorithm Explained">
+  <meta property="og:description" content="Dive deep into the Luhn Algorithm and understand how credit card numbers are validated.">
+  <meta property="og:type" content="article">
+</head>
+<body class="light-theme">
+  <header class="site-header">
+    <div class="logo-container">
+      <a href="index.html" class="logo">
+        <svg class="android-icon" viewBox="0 0 24 24" width="40" height="40">
+          <path d="M6,18c0,0.55 0.45,1 1,1h1v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L11,19h2v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L16,19h1c0.55,0 1,-0.45 1,-1L18,8L6,8v10z"/>
+        </svg>
+        Baixe o App
+      </a>
+    </div>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-sun light-icon"></i>
+      <i class="fas fa-moon dark-icon"></i>
+    </button>
+  </header>
+
+  <main class="container">
+    <section class="content-article">
+      <h1>Luhn Algorithm: The Guardian of Credit Card Validation</h1>
+      
+      <p>The Luhn Algorithm, also known as the "modulus 10" or "mod 10" algorithm, is a simple checksum formula used to validate various identification numbers, most notably credit card numbers.</p>
+      
+      <h2>How the Luhn Algorithm Works</h2>
+      <p>The algorithm follows a specific sequence of steps to validate a number:</p>
+      
+      <ol class="feature-list">
+        <li>Starting from the rightmost digit (excluding the check digit), double every second digit.</li>
+        <li>If doubling results in a two-digit number, sum its digits.</li>
+        <li>Sum all the resulting digits.</li>
+        <li>If the total sum is divisible by 10, the number is valid.</li>
+      </ol>
+      
+      <h2>Practical Example</h2>
+      <p>Let's validate a credit card number using our <a href="index.html#generator">Credit Card Generator Tool</a>:</p>
+      
+      <pre class="code-example">
+Card Number: 4111 1111 1111 1111
+1. Double every second digit from right:
+   4 2 1 2 1 2 1 2 1 2 1 2 1 2 1 2
+2. Sum digits (if > 9, add individual digits):
+   4 4 1 4 1 4 1 4 1 4 1 4 1 4 1 4
+3. Total sum: 40
+4. 40 is divisible by 10 ✓ Valid Card Number
+      </pre>
+      
+      <h2>Real-World Applications</h2>
+      <p>The Luhn Algorithm is used by:</p>
+      <ul class="feature-list">
+        <li>Credit card companies</li>
+        <li>Payment processing systems</li>
+        <li>Online transaction platforms</li>
+        <li>Identity number validation</li>
+      </ul>
+      
+      <h2>Limitations</h2>
+      <p>While effective, the Luhn Algorithm:</p>
+      <ul class="feature-list">
+        <li>Doesn't verify if an account actually exists</li>
+        <li>Provides basic error detection</li>
+        <li>Is not a security measure against fraud</li>
+      </ul>
+      
+      <div class="disclaimer">
+        <h3>Explore and Test</h3>
+        <p>Try generating and validating card numbers with our <a href="index.html#generator">Credit Card Generator Tool</a>. Perfect for developers, testers, and those curious about number validation!</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-links">
+          <h3 class="footer-heading">Site Links</h3>
+          <ul class="footer-nav">
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="terms-of-use.html" class="footer-link">Terms of Use</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-legal">
+          <p class="copyright">&copy; 2023 namsogen.top - All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import ThemeManager from './js/theme-manager.js';
+    const themeManager = new ThemeManager();
+    themeManager.init();
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Use - Namsogen</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-theme">
+  <header class="site-header">
+    <div class="logo-container">
+      <a href="index.html" class="logo">
+        <svg class="android-icon" viewBox="0 0 24 24" width="40" height="40">
+          <path d="M6,18c0,0.55 0.45,1 1,1h1v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L11,19h2v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L16,19h1c0.55,0 1,-0.45 1,-1L18,8L6,8v10z"/>
+        </svg>
+        Baixe o App
+      </a>
+    </div>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-sun light-icon"></i>
+      <i class="fas fa-moon dark-icon"></i>
+    </button>
+  </header>
+
+  <main class="container">
+    <section class="content-article">
+      <h1>Terms of Use</h1>
+      
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing and using Namsogen, you agree to these terms and conditions. Continued use of our platform constitutes acceptance of these terms.</p>
+      
+      <h2>2. Tool Usage</h2>
+      <p>Our tools are strictly designed for:</p>
+      <ul class="feature-list">
+        <li>Software development and testing</li>
+        <li>Educational purposes</li>
+        <li>Legitimate professional use</li>
+      </ul>
+      
+      <h2>3. Prohibited Activities</h2>
+      <p>Users are expressly prohibited from using our tools for:</p>
+      <ul class="feature-list">
+        <li>Fraudulent activities</li>
+        <li>Generating cards for illegal transactions</li>
+        <li>Attempting to bypass financial security systems</li>
+      </ul>
+      
+      <h2>4. Intellectual Property</h2>
+      <p>All content, designs, and tools on Namsogen are protected by intellectual property laws. Reproduction or commercial use requires explicit permission.</p>
+      
+      <h2>5. Disclaimer of Warranties</h2>
+      <p>Namsogen provides tools "as is" without any warranties. We are not responsible for any consequences arising from tool usage.</p>
+      
+      <div class="disclaimer">
+        <h3>Limitation of Liability</h3>
+        <p>In no event shall Namsogen be liable for any direct, indirect, incidental, or consequential damages resulting from tool usage.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-links">
+          <h3 class="footer-heading">Site Links</h3>
+          <ul class="footer-nav">
+            <li><a href="luhn-algorithm.html" class="footer-link">Luhn Algorithm</a></li>
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="terms-of-use.html" class="footer-link">Terms of Use</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-legal">
+          <p class="copyright">&copy; 2023 namsogen.top - All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import ThemeManager from './js/theme-manager.js';
+    const themeManager = new ThemeManager();
+    themeManager.init();
+  </script>
+</body>
+</html>
