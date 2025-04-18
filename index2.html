@@ -1,0 +1,306 @@
+<html lang="en">
+<head>
+  <!-- ASO-Optimized Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NamsoGen : Namso Gen - Credit Card Generator</title>
+      <link rel="icon" type="image/png" sizes="16x16" href="./iconapp.png" />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EN0DRPF9Q7"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-EN0DRPF9Q7");
+    </script>
+  <meta name="description" content="Free online credit card generator for developers and testers (Namsogen). Generate valid card numbers instantly with customizable BIN, expiry, and CVV.">
+  <meta name="keywords" content="credit card generator, card number tool, BIN generator, dev tools, testing cards, ccgen, credit card generator, generator, cc, bin, credit, mastercard, visa, amex, discover, namso gen, namso gen.com, namsogen, bin check, bin checker, bin chk">
+  
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Namso Gen - Credit Cards Generator" />
+    <meta
+      property="og:description"
+      content="NamsoGen is a random test credit card number generator based on your own BIN pattern. Generate credit card numbers for testing purposes with ease."
+    />
+    <meta property="og:image" content="./iconapp.png" />
+    <meta property="og:url" content="https://namsogen.top" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Namso Gen - Credit Cards Generator" />
+    <meta
+      name="twitter:description"
+      content="NamsoGen is a random test credit card number generator based on your own BIN pattern. Generate credit card numbers for testing purposes with ease."
+    />
+    <meta name="twitter:image" content="./iconapp.png" />
+
+
+
+    <meta name="author" content="megatopx" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+  
+  <!-- Existing head content remains the same -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- Import map for any JS modules we might need -->
+  <script type="importmap">
+  {
+    "imports": {
+      "theme-manager": "./js/theme-manager.js"
+    }
+  }
+  </script>
+</head>
+<body class="light-theme">
+  <!-- Keep existing structure, just update logo section -->
+  <header class="site-header">
+    <!-- Modify the logo container in the header -->
+    <div class="logo-container">
+      <a href="#download-app" class="logo">
+        <svg class="android-icon" viewBox="0 0 24 24" width="40" height="40">
+          <path d="M6,18c0,0.55 0.45,1 1,1h1v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L11,19h2v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L16,19h1c0.55,0 1,-0.45 1,-1L18,8L6,8v10zM3.5,8C2.67,8 2,8.67 2,9.5v7c0,0.83 0.67,1.5 1.5,1.5S5,17.33 5,16.5v-7C5,8.67 4.33,8 3.5,8zM20.5,8c-0.83,0 -1.5,0.67 -1.5,1.5v7c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5v-7c0,-0.83 -0.67,-1.5 -1.5,-1.5zM15.53,2.16l1.3,-1.3c0.2,-0.2 0.2,-0.51 0,-0.71 -0.2,-0.2 -0.51,-0.2 -0.71,0l-1.48,1.48C13.85,1.23 12.95,1 12,1c-0.96,0 -1.86,0.23 -2.66,0.63L7.85,0.15c-0.2,-0.2 -0.51,-0.2 -0.71,0 -0.2,0.2 -0.2,0.51 0,0.71l1.31,1.31C6.97,3.26 6,5.01 6,7h12c0,-1.99 -0.97,-3.75 -2.47,-4.84zM10,5L9,5L9,4h1v1zM15,5h-1L14,4h1v1z"/>
+        </svg>
+        Download the App
+      </a>
+    </div>
+    
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <i class="fas fa-sun light-icon"></i>
+      <i class="fas fa-moon dark-icon"></i>
+    </button>
+  </header>
+
+  <!-- Top Banner Ad -->
+  <div class="ad-banner ad-banner-large">
+    <div class="ad-placeholder" id="banner-728x90_1">
+      <span class="ad-text">Advertisement 728x90</span>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <section id="generator" class="tool-section">
+      <div class="generator-container">
+        <div class="generator-main">
+          <h2>Credit Card Generator</h2>
+          <form id="cc-form">
+            <input type="text" id="bin" placeholder="Enter BIN (e.g. 4xxxxx)" />
+            <div class="select-group">
+              <select id="month">
+                <option value="Random">Random Month</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <select id="year">
+                <option value="Random">Random Year</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+                <option value="2031">2031</option>
+                <option value="2032">2032</option>
+                <option value="2033">2033</option>
+                <option value="2034">2034</option>
+                <option value="2035">2035</option>
+                <option value="2036">2036</option>
+                <option value="2037">2037</option>
+                <option value="2038">2038</option>
+                <option value="2039">2039</option>
+                <option value="2040">2040</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <input type="text" id="ccv" placeholder="CCV (Random if empty)" />
+              <input type="number" id="count" placeholder="Quantity (default: 20)" />
+            </div>
+            <button type="button" class="copy-btn generate-btn" onclick="generate()">
+              <i class="fas fa-wand-magic-sparkles"></i> Generate Cards
+            </button>
+          </form>
+          <textarea id="output" readonly></textarea>
+          <button class="copy-btn" onclick="copyToClipboard()">
+            <i class="fas fa-copy"></i> Copy to Clipboard
+          </button>
+        </div>
+        
+        <!-- Desktop Ad Placement -->
+        <div class="desktop-ad-container">
+          <div class="ad-placeholder ad-300x425">
+            <span class="ad-text">Advertisement 300×425</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="article" class="article-section">
+      <div class="container">
+        <!-- Article Banner Ad -->
+        <div class="ad-banner ad-banner-medium">
+          <div class="ad-placeholder" id="banner-468x60_1">
+            <span class="ad-text">Advertisement 468x60</span>
+          </div>
+        </div>
+        
+        <article class="content-article">
+          <h2 class="article-title">Understanding Credit Card Generators</h2>
+          
+          <p>Namsogen's Credit Card Generator is a powerful tool designed for testing and development purposes. Our generator creates valid credit card numbers that pass basic validation algorithms but cannot be used for actual transactions.</p>
+          
+          <h3>How Our Credit Card Generator Works</h3>
+          
+          <p>Namsogen utilizes the Luhn algorithm (also known as mod 10) to generate valid credit card numbers. This algorithm is used by all major credit card companies to validate card numbers.</p>
+          
+          <p>When you enter a BIN (Bank Identification Number), our system creates card numbers that match that specific pattern. You can use "x" as a wildcard for random digits in your BIN input.</p>
+          
+          <h3>Features of Our Tool</h3>
+          
+          <ul class="feature-list">
+            <li><strong>Custom BIN Support:</strong> Generate cards based on specific Bank Identification Numbers</li>
+            <li><strong>Expiration Date Options:</strong> Set custom or random expiration dates</li>
+            <li><strong>CCV Generation:</strong> Automatically create valid security codes based on card type</li>
+            <li><strong>Bulk Generation:</strong> Create multiple card numbers at once</li>
+            <li><strong>Copy Functionality:</strong> Easily copy results to clipboard</li>
+          </ul>
+          
+          <h3>Common Uses</h3>
+          
+          <p>Our credit card generator is commonly used for:</p>
+          
+          <ul class="feature-list">
+            <li>Testing e-commerce websites</li>
+            <li>Validating payment forms</li>
+            <li>Software development</li>
+            <li>Data entry training</li>
+          </ul>
+          
+          <div class="disclaimer">
+            <h4>Important Disclaimer</h4>
+            <p>The credit card numbers generated by this tool are mathematically valid but not connected to any real accounts or financial institutions. Using these numbers for fraudulent purposes is illegal and unethical. This tool is provided for legitimate testing and development purposes only.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Modify the download section -->
+    <section id="download-app" class="download-section">
+      <div class="container">
+        <div class="download-content">
+          <div class="download-text">
+            <h2 class="section-title">Get Our Android App</h2>
+            <p class="download-description">Powerful mobile toolkit with multiple web utilities</p>
+            <ul class="app-features">
+              <li><i class="fas fa-check"></i> BIN Checker Tool</li>
+              <li><i class="fas fa-check"></i> Namsogen Credit Card Generator</li>
+              <li><i class="fas fa-check"></i> HTTP Proxy List Generator</li>
+              <li><i class="fas fa-check"></i> Proxy Checker</li>
+              <li><i class="fas fa-check"></i> IP Analysis Tool</li>
+              <li><i class="fas fa-check"></i> Regular updates</li>
+            </ul>
+            <a href="https://www.mediafire.com/" class="download-button">
+              <i class="fab fa-android"></i> Download App
+            </a>
+          </div>
+          <div class="download-icon">
+            <svg class="android-icon" viewBox="0 0 24 24" width="120" height="120">
+              <path d="M6,18c0,0.55 0.45,1 1,1h1v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L11,19h2v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L16,19h1c0.55,0 1,-0.45 1,-1L18,8L6,8v10zM3.5,8C2.67,8 2,8.67 2,9.5v7c0,0.83 0.67,1.5 1.5,1.5S5,17.33 5,16.5v-7C5,8.67 4.33,8 3.5,8zM20.5,8c-0.83,0 -1.5,0.67 -1.5,1.5v7c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5v-7c0,-0.83 -0.67,-1.5 -1.5,-1.5zM15.53,2.16l1.3,-1.3c0.2,-0.2 0.2,-0.51 0,-0.71 -0.2,-0.2 -0.51,-0.2 -0.71,0l-1.48,1.48C13.85,1.23 12.95,1 12,1c-0.96,0 -1.86,0.23 -2.66,0.63L7.85,0.15c-0.2,-0.2 -0.51,-0.2 -0.71,0 -0.2,0.2 -0.2,0.51 0,0.71l1.31,1.31C6.97,3.26 6,5.01 6,7h12c0,-1.99 -0.97,-3.75 -2.47,-4.84zM10,5L9,5L9,4h1v1zM15,5h-1L14,4h1v1z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Android App Download Popup -->
+  <div id="android-download-popup" class="android-download-popup">
+    <div class="popup-content">
+      <button class="popup-close" onclick="closeAndroidDownloadPopup()">&times;</button>
+      <div class="popup-icon">
+        <svg class="android-icon" viewBox="0 0 24 24" width="80" height="80">
+          <path d="M6,18c0,0.55 0.45,1 1,1h1v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L11,19h2v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L16,19h1c0.55,0 1,-0.45 1,-1L18,8L6,8v10zM3.5,8C2.67,8 2,8.67 2,9.5v7c0,0.83 0.67,1.5 1.5,1.5S5,17.33 5,16.5v-7C5,8.67 4.33,8 3.5,8zM20.5,8c-0.83,0 -1.5,0.67 -1.5,1.5v7c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5v-7c0,-0.83 -0.67,-1.5 -1.5,-1.5zM15.53,2.16l1.3,-1.3c0.2,-0.2 0.2,-0.51 0,-0.71 -0.2,-0.2 -0.51,-0.2 -0.71,0l-1.48,1.48C13.85,1.23 12.95,1 12,1c-0.96,0 -1.86,0.23 -2.66,0.63L7.85,0.15c-0.2,-0.2 -0.51,-0.2 -0.71,0 -0.2,0.2 -0.2,0.51 0,0.71l1.31,1.31C6.97,3.26 6,5.01 6,7h12c0,-1.99 -0.97,-3.75 -2.47,-4.84zM10,5L9,5L9,4h1v1zM15,5h-1L14,4h1v1z"/>
+        </svg>
+      </div>
+      <h3>Download our Android App</h3>
+      <p>Get access to all the tools!</p>
+      <a href="https://www.mediafire.com/" class="download-app-button" id="download-app-link">
+        <i class="fab fa-android"></i> Download Now
+      </a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-links">
+          <h3 class="footer-heading">Site Links</h3>
+          <ul class="footer-nav">
+            <li><a href="luhn-algorithm.html" class="footer-link">Luhn Algorithm</a></li>
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="terms-of-use.html" class="footer-link">Terms of Use</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-legal">
+          <h3 class="footer-heading">Privacy & Cookies</h3>
+          <p class="footer-text">This site uses cookies to enhance your experience. All tools process data in your browser - we never store your sensitive information.</p>
+          <p class="copyright">&copy; 2024 namsogen.top - All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script type="module">
+    import ThemeManager from 'theme-manager';
+    const themeManager = new ThemeManager();
+    themeManager.init();
+
+    // Android Download Popup Script
+    function showAndroidDownloadPopup() {
+      const isAndroid = /Android/i.test(navigator.userAgent);
+      const hasSeenPopup = localStorage.getItem('androidDownloadPopupShown');
+      
+      const popup = document.getElementById('android-download-popup');
+      if (isAndroid && !hasSeenPopup) {
+        popup.classList.add('show');
+        localStorage.setItem('androidDownloadPopupShown', 'true');
+      }
+    }
+
+    function closeAndroidDownloadPopup() {
+      const popup = document.getElementById('android-download-popup');
+      popup.classList.remove('show');
+    }
+
+    // Attach to window events
+    window.showAndroidDownloadPopup = showAndroidDownloadPopup;
+    window.closeAndroidDownloadPopup = closeAndroidDownloadPopup;
+
+    // Show popup on page load
+    document.addEventListener('DOMContentLoaded', showAndroidDownloadPopup);
+  </script>
+  <div class="telegram-float-button animate__animated animate__bounceInUp">
+    <a href="https://t.me/namsogengroup" target="_blank" aria-label="Join Telegram Group">
+      <i class="fab fa-telegram"></i>
+    </a>
+  </div>
+</body>
+</html>
