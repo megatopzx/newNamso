@@ -1,19 +1,6 @@
 /**
  * Theme Manager for handling light/dark mode
  */
-
-/**
- * Tweakable parameters
- */
-/* @tweakable the color the telegram buttons */
-const MARY_COLOR = "#3498db";
-/* @tweakable the seconds before showing the Android popup shows */
-const ANDSOON_POPUP_DELAY = 2000;
-/* @tweakable the size of the floating Telegram button */
-const FLO_BTN_SIZE = { width: 60, height: 60 };
-/* @tweakable the animation duration for the floating button bounce */
-const FLOAT_ANIM_DURATION = "0.3s";
-
 export default class ThemeManager {
   constructor() {
     this.STORAGE_KEY = 'namsogen-theme';
@@ -109,3 +96,4 @@ export default class ThemeManager {
     }
   }
 }
+

@@ -193,6 +193,7 @@ p {
   justify-content: center;
   padding: var(--spacing-md) 0;
   background-color: var(--color-bg-secondary);
+  margin-bottom: var(--spacing-md);
 }
 
 .ad-banner-large {
@@ -213,7 +214,7 @@ p {
   border-radius: var(--border-radius-sm);
 }
 
-#banner-728x90_1 {
+#banner-728x90_1, #banner-728x90_2 {
   width: 728px;
   height: 90px;
 }
@@ -223,9 +224,31 @@ p {
   height: 60px;
 }
 
-.ad-text {
-  color: var(--color-text-tertiary);
-  font-size: var(--font-size-small);
+#banner-300x250_1, #banner-300x250_2 {
+  width: 300px;
+  height: 250px;
+}
+
+#banner-160x300_1 {
+  width: 160px;
+  height: 300px;
+}
+
+.side-ad {
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+}
+
+/* Device visibility classes */
+.desktop-only {
+  display: none;
+}
+
+.mobile-only {
+  display: flex;
 }
 
 /* Hero Section */
@@ -570,7 +593,7 @@ textarea#output {
     flex-direction: column;
   }
   
-  #banner-728x90_1 {
+  #banner-728x90_1, #banner-728x90_2 {
     width: 100%;
     max-width: 728px;
   }
@@ -578,6 +601,11 @@ textarea#output {
   #banner-468x60_1 {
     width: 100%;
     max-width: 468px;
+  }
+  
+  #banner-300x250_1, #banner-300x250_2 {
+    width: 100%;
+    max-width: 300px;
   }
   
   /* Hide desktop ad on mobile */
@@ -614,6 +642,14 @@ textarea#output {
 }
 
 @media (min-width: 769px) {
+  .desktop-only {
+    display: flex;
+  }
+  
+  .mobile-only {
+    display: none;
+  }
+  
   .desktop-ad-container {
     display: block;
     width: 300px;
