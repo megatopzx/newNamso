@@ -199,7 +199,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function checkDecryptEnabled() {
         const file = decryptFileInput.files[0];
         const password = decryptPassword.value.trim();
-        const isValidExtension = file && file.name.toLowerCase().endsWith('.encsi');
+        
+        // Update extension check to be more flexible
+        const isValidExtension = file && (
+            file.name.toLowerCase().endsWith('.encsi') ||
+            file.name.toLowerCase().includes('.encsi.') ||
+            file.name.toLowerCase().includes('.encsi')
+        );
         
         decryptButton.disabled = !(file && password && isValidExtension);
 
@@ -334,11 +340,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     const wordArray = decrypted;
                     const arrayBuffer = wordArrayToArrayBuffer(wordArray);
                     
-                    // Create original filename (remove .encSi extension)
+                    // Determine original filename and extension
                     let originalName = file.name;
-                    if (originalName.toLowerCase().endsWith('.encsi')) {
-                        originalName = originalName.slice(0, -6); // Remove .encSi
-                    }
+                    
+                    // Remove any .encSi variations
+                    originalName = originalName.replace(/\.encsi(\.txt)?$/i, '');
                     
                     // Hide animation
                     decryptAnimation.style.display = 'none';
