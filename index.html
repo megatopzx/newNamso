@@ -1,124 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ASO-Optimized Meta Tags -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NamsoGen : Namso Gen - Credit Card Generator</title>
-      <link rel="icon" type="image/png" sizes="16x16" href="./iconapp.png" />
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-EN0DRPF9Q7"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-EN0DRPF9Q7");
-    </script>
-  <meta name="description" content="Free online credit card generator for developers and testers (Namsogen). Generate valid card numbers instantly with customizable BIN, expiry, and CVV.">
-  <meta name="keywords" content="credit card generator, card number tool, BIN generator, dev tools, testing cards, ccgen, credit card generator, generator, cc, bin, credit, mastercard, visa, amex, discover, namso gen, namso gen.com, namsogen, bin check, bin checker, bin chk">
-  
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Namso Gen - Credit Cards Generator" />
-    <meta
-      property="og:description"
-      content="NamsoGen is a random test credit card number generator based on your own BIN pattern. Generate credit card numbers for testing purposes with ease."
-    />
-    <meta property="og:image" content="./iconapp.png" />
-    <meta property="og:url" content="https://namsogen.top" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimized Meta Tags -->
+    <title>Namso Gen CC Generator | Free Credit Card Number Testing Tool</title>
+    <meta name="description" content="Namso Gen is a powerful online credit card generator for developers and testers. Generate valid credit card numbers with BIN customization, perfect for payment system testing.">
+    <meta name="keywords" content="credit card generator, namso gen, card number testing, BIN generator, payment system testing, card validation, credit card generator, card number tool, BIN generator, dev tools, testing cards, ccgen, credit card generator, generator, cc, bin, credit, mastercard, visa, amex, discover, namso gen, namso gen.com, namsogen, bin check, bin checker, bin chk">
+    
+    <!-- Open Graph Tags for Social Media Sharing -->
+    <meta property="og:title" content="Namso Gen CC Generator">
+    <meta property="og:description" content="Generate valid credit card numbers for testing and development purposes">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" sizes="16x16" href="./iconapp.png" />
+    <meta property="og:image" content="https://namsogen.top/iconapp.png">
+    <meta property="og:url" content="https://namsogen.top/index.html">
 
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Namso Gen - Credit Cards Generator" />
-    <meta
-      name="twitter:description"
-      content="NamsoGen is a random test credit card number generator based on your own BIN pattern. Generate credit card numbers for testing purposes with ease."
-    />
-    <meta name="twitter:image" content="./iconapp.png" />
+    
+    <!-- Additional SEO Tags -->
+    <link rel="canonical" href="https://namsogen.top/index.html">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Existing Head Content -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="namso-gen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</style>
+<!-- Google tag (gtag.js) -->
+<script
+async
+src="https://www.googletagmanager.com/gtag/js?id=G-EN0DRPF9Q7"
+></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+  dataLayer.push(arguments);
+}
+gtag("js", new Date());
+gtag("config", "G-EN0DRPF9Q7");
+</script>
+    <style>
+        /* Bin Save popup styles */
+        .binsave-popup-backdrop {
+            position: fixed;
+            left: 0; top: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(44, 62, 80, 0.43);
+            display: none;
+            z-index: 3000;
+        }
+        .binsave-popup-backdrop.active {
+            display: block;
+        }
+        .binsave-popup {
+            position: fixed;
+            background: #fff;
+            left: 50%;
+            top: 50%;
+            width: 95%;
+            max-width: 430px;
+            transform: translate(-50%, -50%);
+            border-radius: 12px;
+            box-shadow: 0 6px 32px rgba(44,62,80,0.11);
+            padding: 28px 24px 12px;
+            z-index: 3100;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .binsave-popup h2 {
+            margin-bottom: 14px;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-top: 0;
+        }
+        .binsave-popup label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 3px;
+        }
+        .binsave-popup input,
+        .binsave-popup textarea,
+        .binsave-popup select {
+            width: 100%;
+            padding: 9px 13px;
+            font-size: 1rem;
+            border: 1px solid var(--gray-color);
+            border-radius: 7px;
+            margin-bottom: 9px;
+        }
+        .binsave-popup .popup-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+        .binsave-popup .popup-btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            background: var(--primary-color);
+            color: #fff;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background .2s;
+        }
+        .binsave-popup .popup-btn.cancel {
+            background: var(--gray-color);
+            color: #34495e;
+        }
+        .binsave-popup .popup-btn:hover {
+            background: var(--primary-dark);
+        }
+        .binsave-popup .popup-btn.cancel:hover {
+            background: #bdc3c7;
+        }
+        .binsave-popup .error-msg {
+            color: var(--danger-color);
+            font-size: 0.92rem;
+            margin-bottom: 9px;
+        }
+        .download-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .download-header:hover {
+            background-color: var(--primary-dark);
+        }
+        .download-header i {
+            margin-right: 10px;
+        }
+        .luhn-notification {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary-dark);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .luhn-notification i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
 
+        /* Mobile App Download Popup Styles */
+        #mobile-app-download-popup {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 5000;
+        }
 
+        .mobile-app-download-modal {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
 
-    <meta name="author" content="megatopx" />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
-  <!-- Existing head content remains the same -->
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <!-- Import map for any JS modules we might need -->
-  <script type="importmap">
-  {
-    "imports": {
-      "theme-manager": "./js/theme-manager.js"
-    }
-  }
-  </script>
+        .mobile-app-download-modal h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .mobile-app-download-modal p {
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .mobile-app-download-modal .app-download-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .mobile-app-download-modal .app-download-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .mobile-app-download-modal .download-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .mobile-app-download-modal .already-downloaded-btn {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .mobile-app-download-modal .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-color);
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body class="light-theme">
-  <!-- Keep existing structure, just update logo section -->
-  <header class="site-header">
-    <!-- Modify the logo container in the header -->
-    <div class="logo-container">
-      <a href="#download-app" class="logo">
-        <svg class="android-icon" viewBox="0 0 24 24" width="40" height="40">
-          <path d="M6,18c0,0.55 0.45,1 1,1h1v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L11,19h2v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L16,19h1c0.55,0 1,-0.45 1,-1L18,8L6,8v10zM3.5,8C2.67,8 2,8.67 2,9.5v7c0,0.83 0.67,1.5 1.5,1.5S5,17.33 5,16.5v-7C5,8.67 4.33,8 3.5,8zM20.5,8c-0.83,0 -1.5,0.67 -1.5,1.5v7c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5v-7c0,-0.83 -0.67,-1.5 -1.5,-1.5zM15.53,2.16l1.3,-1.3c0.2,-0.2 0.2,-0.51 0,-0.71 -0.2,-0.2 -0.51,-0.2 -0.71,0l-1.48,1.48C13.85,1.23 12.95,1 12,1c-0.96,0 -1.86,0.23 -2.66,0.63L7.85,0.15c-0.2,-0.2 -0.51,-0.2 -0.71,0 -0.2,0.2 -0.2,0.51 0,0.71l1.31,1.31C6.97,3.26 6,5.01 6,7h12c0,-1.99 -0.97,-3.75 -2.47,-4.84zM10,5L9,5L9,4h1v1zM15,5h-1L14,4h1v1z"/>
-        </svg>
-        Download App
-      </a>
+<body>
+    <div class="container">
+        <!-- New Download Header Section -->
+        <div class="download-header" onclick="scrollToDownloadSection()">
+            <i class="fas fa-mobile-alt"></i>
+            Download Our Complete App
+        </div>
+
+        <header>
+            <h1><i class="fas fa-credit-card"></i> Namso-Gen</h1>
+            <p class="subtitle">Credit Card Generator Tool</p>
+            
+            <!-- Luhn Algorithm Notification -->
+            <div class="luhn-notification">
+                <i class="fas fa-info-circle"></i>
+                Generated data is fictional. Numbers validated using Luhn algorithm for testing purposes only.
+            </div>
+        </header>
+
+        <!-- App Download Menu Section -->
+        <div class="app-download-section">
+            <button class="menu-icon" id="downloadMenuBtn"><i class="fas fa-bars"></i></button>
+            <div class="dropdown-menu" id="downloadMenu">
+                <h3><i class="fas fa-download"></i> Download App</h3>
+                <a href="https://www.mediafire.com/file/zol2kqrx5366yx3/namsogen.apk/file" class="download-option"><i class="fas fa-download"></i> Download app APK</a>
+                <a href="index.html" class="download-option"><i class="fas fa-credit-card"></i> Namso Generator</a>
+                <a href="index-fileEncriptor.html" class="download-option"><i class="fas fa-shield-alt"></i> File Encryptor</a>
+                <a href="binsave.html" class="download-option"><i class="fas fa-database"></i> Bin Save</a>
+                <a href="https://t.me/ccgen_namsogen" class="download-option"><i class="fab fa-telegram"></i> Telegram Channel</a>
+            </div>
+        </div>
+
+        <main>
+            <div class="card namso-card">
+                <div class="card-content">
+                    <div class="generator-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="bin" placeholder=" " class="form-control">
+                                <label for="bin">BIN</label>
+                                <small>Use 'x' for random digits</small>
+                            </div>
+                            <div class="form-group month-group">
+                                <select id="month" class="form-control" value="Random">
+                                    <option value="Random" selected>Random</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <label for="month">Month</label>
+                            </div>
+                            <div class="form-group year-group">
+                                <select id="year" class="form-control" value="Random">
+                                    <option value="Random" selected>Random</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="2029">2029</option>
+                                    <option value="2030">2030</option>
+                                    <option value="2031">2031</option>
+                                    <option value="2032">2032</option>
+                                    <option value="2033">2033</option>
+                                    <option value="2034">2034</option>
+                                    <option value="2035">2035</option>
+                                    <option value="2036">2036</option>
+                                    <option value="2037">2037</option>
+                                    <option value="2038">2038</option>
+                                    <option value="2039">2039</option>
+                                    <option value="2040">2040</option>
+                                    <option value="2041">2041</option>
+                                    <option value="2042">2042</option>                                    
+                                </select>
+                                <label for="year">Year</label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="ccv" placeholder=" " class="form-control">
+                                <label for="ccv">CVV</label>
+                                <small>Random if left empty</small>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" id="count" value="20" min="1" max="100" class="form-control">
+                                <label for="count">Quantity</label>
+                            </div>
+                        </div>
+                        <div class="form-row action-row">
+                            <button onclick="generate()" class="action-button generator-btn">
+                                <i class="fas fa-cogs"></i> Generate
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="result-section">
+                        <textarea id="output" class="result-output" readonly placeholder="Generated cards will appear here..."></textarea>
+                        <div class="result-actions">
+                            <button onclick="copyToClipboard()" class="action-button secondary">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <button id="binsave-btn" class="action-button secondary">
+                                <i class="fas fa-database"></i> Bin Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Namso Gen Detailed Article -->
+            <div class="namso-gen-article aso-article">
+                <h2><i class="fas fa-credit-card"></i> Namso Gen: The Ultimate Tool for Secure Credit Card Testing</h2>
+                <p>In today's digital landscape, ensuring the security and functionality of payment systems is paramount. Developers, security professionals, and testers require reliable tools to simulate real-world payment scenarios without compromising sensitive data. Namso Gen, also known as Namso CCGen, stands out as a premier solution for generating valid-looking credit card numbers for testing and development purposes.</p>
+
+                <h3>🔍 What is Namso Gen?</h3>
+                <p>Namso Gen is a free, online credit card number generator designed specifically for testing and development. Utilizing the industry-standard Luhn algorithm (MOD 10), Namso Gen produces credit card numbers that adhere to the structural integrity of real cards, including the Bank Identification Number (BIN), expiration date (MM/YYYY), and Card Verification Value (CVV). These generated numbers are ideal for validating payment systems, ensuring compliance, and conducting security assessments.</p>
+
+                <h3>⚙️ Key Features of Namso Gen</h3>
+                <ul>
+                    <li><strong>BIN-Based Generation:</strong> Input a valid 6-8 digit BIN to generate credit card numbers associated with specific banks or financial institutions.</li>
+                    <li><strong>Multiple Card Types Supported:</strong> Generate numbers for various card brands, including Visa, MasterCard, American Express, and more.</li>
+                    <li><strong>Customizable Parameters:</strong> Specify the number of cards to generate, along with optional expiration dates and CVV codes.</li>
+                    <li><strong>Luhn Algorithm Validation:</strong> Ensure that all generated numbers pass standard verification checks, maintaining structural validity.</li>
+                </ul>
+
+                <h3>🧪 Common Use Cases</h3>
+                <p>Namso Gen is primarily used in the following scenarios:</p>
+                <ul>
+                    <li><strong>Payment System Testing:</strong> Validate the functionality of payment gateways and e-commerce platforms by simulating real-world transactions.</li>
+                    <li><strong>Security Assessments:</strong> Conduct penetration testing and vulnerability assessments without exposing real cardholder data.</li>
+                    <li><strong>Compliance Verification:</strong> Ensure that systems adhere to industry standards and regulations by testing with valid-looking card numbers.</li>
+                    <li><strong>Educational Purposes:</strong> Teach students and professionals about payment systems, encryption methods, and fraud prevention techniques.</li>
+                </ul>
+
+                <h3>⚠️ Legal and Ethical Considerations</h3>
+                <p>It's crucial to understand that while Namso Gen generates structurally valid credit card numbers, these numbers are not linked to actual bank accounts and cannot be used for real transactions. Using these generated numbers for fraudulent activities is illegal and unethical. Namso Gen is intended solely for legitimate testing and development purposes.</p>
+            </div>
+
+            <!-- Download Complete App Section -->
+            <div class="download-complete-app-section">
+                <div class="download-app-header">
+                    <i class="fab fa-android"></i>
+                    <h2>Exclusive Android App</h2>
+                </div>
+                <div class="download-app-content">
+                    <div class="download-app-features">
+                        <h3>Power Up Your Mobile Security</h3>
+                        <p>Our comprehensive Android app brings powerful tools right to your fingertips. Designed exclusively for Android users.</p>
+                        
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-credit-card"></i>
+                                <span>NamsoGen</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-search"></i>
+                                <span>BIN Checker</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-database"></i>
+                                <span>BIN Save</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-network-wired"></i>
+                                <span>Proxy List</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Proxy Checker</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-globe"></i>
+                                <span>IP Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="download-app-cta">
+                        <p>Exclusively for Android</p>
+                        <a href="https://www.mediafire.com/file/zol2kqrx5366yx3/namsogen.apk/file" class="download-app-btn" target="_blank">
+                            <i class="fas fa-download"></i> Download from MediaFire
+                        </a>
+                        <small>Version 2.0 - Latest Update</small>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <span class="separator">|</span>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <span class="separator">|</span>
+                <a href="terms-of-use.html">Terms of Use</a>
+                <span class="separator">|</span>
+                <a href="binsave.html">Bin Save</a>
+            </div>
+            <p class="copyright">&copy; 2025 File Encryptor. All rights reserved.</p>
+        </footer>
     </div>
     
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-      <i class="fas fa-sun light-icon"></i>
-      <i class="fas fa-moon dark-icon"></i>
-    </button>
-  </header>
-
-  <!-- Top Banner Ad -->
-  <div class="ad-banner ad-banner-large desktop-only">
-    <div class="ad-placeholder" id="banner-728x90_1">
-      <!--<script type="text/javascript">
-        atOptions = {
-          'key' : 'bbce9f830ff8666a7e557280be5748e6',
-          'format' : 'iframe',
-          'height' : 90,
-          'width' : 728,
-          'params' : {}
-        };
-      </script>
-      <script type="text/javascript" src="//www.highperformanceformat.com/bbce9f830ff8666a7e557280be5748e6/invoke.js"></script> -->
-    </div>
-  </div>
-
-  <!-- Mobile Top Banner Ad -->
-  <div class="ad-banner ad-banner-medium mobile-only">
-    <div class="ad-placeholder" id="banner-300x250_1">
-      <!--<script type="text/javascript">
-        atOptions = {
-          'key' : '05ff36ca4c5494fcc5e371ebd4548d28',
-          'format' : 'iframe',
-          'height' : 250,
-          'width' : 300,
-          'params' : {}
-        };
-      </script>
-      <script type="text/javascript" src="//www.highperformanceformat.com/05ff36ca4c5494fcc5e371ebd4548d28/invoke.js"></script>-->
-    </div>
-  </div>
-
-  <main class="main-content">
-    <section id="generator" class="tool-section">
-      <div class="generator-container">
-        <div class="generator-main">
-          <h2>Credit Card Generator NamsoGen</h2>
-          <form id="cc-form">
-            <input type="text" id="bin" placeholder="Enter BIN (e.g. 4xxxxx)" />
-            <div class="select-group">
-              <select id="month">
-                <option value="Random">Random Month</option>
+    <!-- Bin Save Popup -->
+    <div id="binsave-popup-backdrop" class="binsave-popup-backdrop"></div>
+    <div id="binsave-popup" class="binsave-popup" style="display:none;">
+        <h2><i class="fas fa-database"></i> Save BIN</h2>
+        <div class="error-msg" id="binsave-error" style="display:none"></div>
+        
+        <div class="form-group">
+            <input type="text" id="binsave-title" maxlength="30" placeholder=" " class="form-control">
+            <label for="binsave-title">Title</label>
+        </div>
+        
+        <div class="form-group">
+            <input type="text" id="binsave-bin" maxlength="22" placeholder=" " class="form-control">
+            <label for="binsave-bin">BIN</label>
+        </div>
+        
+        <div class="form-group month-group">
+            <select id="binsave-month" class="form-control">
+                <option value="Random" selected>Random</option>
                 <option value="01">01</option>
                 <option value="02">02</option>
                 <option value="03">03</option>
@@ -131,9 +468,14 @@
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
-              </select>
-              <select id="year">
-                <option value="Random">Random Year</option>
+            </select>
+            <label for="binsave-month">Month</label>
+        </div>
+        
+        <div class="form-group year-group">
+            <select id="binsave-year" class="form-control">
+                <option value="Random" selected>Random</option>
+                <option value="2023">2023</option>
                 <option value="2024">2024</option>
                 <option value="2025">2025</option>
                 <option value="2026">2026</option>
@@ -141,257 +483,143 @@
                 <option value="2028">2028</option>
                 <option value="2029">2029</option>
                 <option value="2030">2030</option>
-                <option value="2031">2031</option>
-                <option value="2032">2032</option>
-                <option value="2033">2033</option>
-                <option value="2034">2034</option>
-                <option value="2035">2035</option>
-                <option value="2036">2036</option>
-                <option value="2037">2037</option>
-                <option value="2038">2038</option>
-                <option value="2039">2039</option>
-                <option value="2040">2040</option>
-              </select>
+            </select>
+            <label for="binsave-year">Year</label>
+        </div>
+        
+        <div class="form-group">
+            <input type="text" id="binsave-ccv" maxlength="4" placeholder=" " class="form-control">
+            <label for="binsave-ccv">CVV</label>
+        </div>
+        
+        <div class="form-group">
+            <textarea id="binsave-desc" maxlength="90" placeholder=" " class="form-control"></textarea>
+            <label for="binsave-desc">Description</label>
+        </div>
+        
+        <div class="popup-actions">
+            <button class="popup-btn cancel" id="binsave-cancel">Cancel</button>
+            <button class="popup-btn" id="binsave-save">Save</button>
+        </div>
+    </div>
+
+    <!-- Mobile App Download Popup -->
+    <div id="mobile-app-download-popup">
+        <div class="mobile-app-download-modal">
+            <button class="close-btn" onclick="closeMobileAppDownloadPopup()">&times;</button>
+            <h2>Download Our Mobile App</h2>
+            <p>Get the full app with additional features like Namso Generator, BIN Checker, and more!</p>
+            <div class="app-download-buttons">
+                <button class="app-download-btn download-btn" onclick="downloadApp()">Download</button>
+                <button class="app-download-btn already-downloaded-btn" onclick="markAsDownloaded()">Already Downloaded</button>
             </div>
-            <div class="input-group">
-              <input type="text" id="ccv" placeholder="CCV (Random if empty)" />
-              <input type="number" id="count" placeholder="Quantity (default: 20)" />
-            </div>
-            <button type="button" class="copy-btn generate-btn" onclick="generate()">
-              <i class="fas fa-wand-magic-sparkles"></i> Generate Cards
-            </button>
-          </form>
-          <textarea id="output" readonly></textarea>
-          <button class="copy-btn" onclick="copyToClipboard()">
-            <i class="fas fa-copy"></i> Copy to Clipboard
-          </button>
         </div>
-        
-        <!-- Desktop Ad Placement -->
-        <div class="desktop-ad-container">
-          <div class="ad-placeholder ad-300x425">
-            <!--<script type="text/javascript">
-              atOptions = {
-                'key' : '05ff36ca4c5494fcc5e371ebd4548d28',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-              };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/05ff36ca4c5494fcc5e371ebd4548d28/invoke.js"></script>-->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Side Ad for Desktop -->
-    <div class="side-ad desktop-only">
-      <div class="ad-placeholder" id="banner-160x300_1">
-        <!--<script type="text/javascript">
-          atOptions = {
-            'key' : '2743d2744d624f5ca365b34cc5081fe3',
-            'format' : 'iframe',
-            'height' : 300,
-            'width' : 160,
-            'params' : {}
-          };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/2743d2744d624f5ca365b34cc5081fe3/invoke.js"></script>-->
-      </div>
     </div>
 
-    <section id="article" class="article-section">
-      <div class="container">
-        <!-- Article Banner Ad -->
-        <div class="ad-banner ad-banner-medium">
-          <div class="ad-placeholder" id="banner-468x60_1">
-           <!--<script type="text/javascript">
-              atOptions = {
-                'key' : 'd9935d812f047ed20618fe6dd31aee2d',
-                'format' : 'iframe',
-                'height' : 60,
-                'width' : 468,
-                'params' : {}
-              };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/d9935d812f047ed20618fe6dd31aee2d/invoke.js"></script>-->
-          </div>
-        </div>
-        
-        <article class="content-article">
-          <h2 class="article-title">Understanding Credit Card Generators</h2>
-          
-          <p>Namsogen's Credit Card Generator is a powerful tool designed for testing and development purposes. Our generator creates valid credit card numbers that pass basic validation algorithms but cannot be used for actual transactions.</p>
-          
-          <h3>How Our Credit Card Generator Works</h3>
-          
-          <p>Namsogen utilizes the Luhn algorithm (also known as mod 10) to generate valid credit card numbers. This algorithm is used by all major credit card companies to validate card numbers.</p>
-          
-          <p>When you enter a BIN (Bank Identification Number), our system creates card numbers that match that specific pattern. You can use "x" as a wildcard for random digits in your BIN input.</p>
-          
-          <h3>Features of Our Tool</h3>
-          
-          <ul class="feature-list">
-            <li><strong>Custom BIN Support:</strong> Generate cards based on specific Bank Identification Numbers</li>
-            <li><strong>Expiration Date Options:</strong> Set custom or random expiration dates</li>
-            <li><strong>CCV Generation:</strong> Automatically create valid security codes based on card type</li>
-            <li><strong>Bulk Generation:</strong> Create multiple card numbers at once</li>
-            <li><strong>Copy Functionality:</strong> Easily copy results to clipboard</li>
-          </ul>
-          
-          <h3>Common Uses</h3>
-          
-          <p>Our credit card generator is commonly used for:</p>
-          
-          <ul class="feature-list">
-            <li>Testing e-commerce websites</li>
-            <li>Validating payment forms</li>
-            <li>Software development</li>
-            <li>Data entry training</li>
-          </ul>
-          
-          <div class="disclaimer">
-            <h4>Important Disclaimer</h4>
-            <p>The credit card numbers generated by this tool are mathematically valid but not connected to any real accounts or financial institutions. Using these numbers for fraudulent purposes is illegal and unethical. This tool is provided for legitimate testing and development purposes only.</p>
-          </div>
-        </article>
-      </div>
-    </section>
+    <script src="namso-gen.js"></script>
+    <script>
+    // Bin Save functionality: popup open/close and saving
+    function openBinSavePopup(prefill = {}) {
+        document.getElementById('binsave-popup-backdrop').classList.add('active');
+        const popup = document.getElementById('binsave-popup');
+        popup.style.display = "block";
+        document.getElementById('binsave-error').style.display = "none";
 
-    <!-- Modify the download section -->
-    <section id="download-app" class="download-section">
-      <div class="container">
-        <div class="download-content">
-          <div class="download-text">
-            <h2 class="section-title">Get Our Android App</h2>
-            <p class="download-description">Powerful mobile toolkit with multiple web utilities</p>
-            <ul class="app-features">
-              <li><i class="fas fa-check"></i> BIN Checker Tool</li>
-              <li><i class="fas fa-check"></i> Namsogen Credit Card Generator</li>
-              <li><i class="fas fa-check"></i> HTTP Proxy List Generator</li>
-              <li><i class="fas fa-check"></i> Proxy Checker</li>
-              <li><i class="fas fa-check"></i> IP Analysis Tool</li>
-              <li><i class="fas fa-check"></i> Regular updates</li>
-            </ul>
-            <a href="https://www.mediafire.com/file/zol2kqrx5366yx3/namsogen.apk/file" class="download-button">
-              <i class="fab fa-android"></i> Download App
-            </a>
-          </div>
-          <div class="download-icon">
-            <svg class="android-icon" viewBox="0 0 24 24" width="120" height="120">
-              <path d="M6,18c0,0.55 0.45,1 1,1h1v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L11,19h2v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L16,19h1c0.55,0 1,-0.45 1,-1L18,8L6,8v10zM3.5,8C2.67,8 2,8.67 2,9.5v7c0,0.83 0.67,1.5 1.5,1.5S5,17.33 5,16.5v-7C5,8.67 4.33,8 3.5,8zM20.5,8c-0.83,0 -1.5,0.67 -1.5,1.5v7c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5v-7c0,-0.83 -0.67,-1.5 -1.5,-1.5zM15.53,2.16l1.3,-1.3c0.2,-0.2 0.2,-0.51 0,-0.71 -0.2,-0.2 -0.51,-0.2 -0.71,0l-1.48,1.48C13.85,1.23 12.95,1 12,1c-0.96,0 -1.86,0.23 -2.66,0.63L7.85,0.15c-0.2,-0.2 -0.51,-0.2 -0.71,0 -0.2,0.2 -0.2,0.51 0,0.71l1.31,1.31C6.97,3.26 6,5.01 6,7h12c0,-1.99 -0.97,-3.75 -2.47,-4.84zM10,5L9,5L9,4h1v1zM15,5h-1L14,4h1v1z"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </section>
+        document.getElementById('binsave-title').value = prefill.title || "";
+        document.getElementById('binsave-bin').value = prefill.bin || (document.getElementById('bin').value || "");
+        document.getElementById('binsave-month').value = prefill.month || (document.getElementById('month').value || "Random");
+        document.getElementById('binsave-year').value = prefill.year || (document.getElementById('year').value || "Random");
+        document.getElementById('binsave-ccv').value = prefill.ccv || (document.getElementById('ccv').value || "");
+        document.getElementById('binsave-desc').value = prefill.desc || "";
+        popup.dataset.editIndex = typeof prefill._idx === "number" ? prefill._idx : "";
+    }
+    function closeBinSavePopup() {
+        document.getElementById('binsave-popup-backdrop').classList.remove('active');
+        document.getElementById('binsave-popup').style.display = "none";
+    }
+    document.getElementById('binsave-btn').addEventListener('click', () => openBinSavePopup());
+    document.getElementById('binsave-cancel').addEventListener('click', closeBinSavePopup);
+    document.getElementById('binsave-popup-backdrop').addEventListener('click', closeBinSavePopup);
 
-    <!-- Bottom Banner Ad - Desktop Only -->
-    <div class="ad-banner ad-banner-large desktop-only">
-      <div class="ad-placeholder" id="banner-728x90_2">
-       <!-- <script type="text/javascript">
-          atOptions = {
-            'key' : 'bbce9f830ff8666a7e557280be5748e6',
-            'format' : 'iframe',
-            'height' : 90,
-            'width' : 728,
-            'params' : {}
-          };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/bbce9f830ff8666a7e557280be5748e6/invoke.js"></script>-->
-      </div>
-    </div>
+    document.getElementById('binsave-save').addEventListener('click', function() {
+        const title = document.getElementById('binsave-title').value.trim();
+        const bin = document.getElementById('binsave-bin').value.trim();
+        const month = document.getElementById('binsave-month').value;
+        const year = document.getElementById('binsave-year').value;
+        const ccv = document.getElementById('binsave-ccv').value.trim();
+        const desc = document.getElementById('binsave-desc').value.trim();
 
-    <!-- Bottom Banner Ad - Mobile Only -->
-    <div class="ad-banner ad-banner-medium mobile-only">
-      <div class="ad-placeholder" id="banner-300x250_2">
-       <!-- <script type="text/javascript">
-          atOptions = {
-            'key' : '05ff36ca4c5494fcc5e371ebd4548d28',
-            'format' : 'iframe',
-            'height' : 250,
-            'width' : 300,
-            'params' : {}
-          };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/05ff36ca4c5494fcc5e371ebd4548d28/invoke.js"></script> -->
-      </div>
-    </div>
-  </main>
+        // Simple validation
+        if (!title) { showErr('Title required'); return; }
+        if (!bin) { showErr('BIN required'); return; }
+        if (!/^[0-9xX]{6,22}$/.test(bin)) { showErr('Invalid BIN (6-22 digits/x)'); return; }
+        if (ccv && !/^[0-9]{3,4}$/.test(ccv)) { showErr('Invalid CVV'); return; }
+        if (desc.length > 90) { showErr('Description too long'); return; }
+        const binsaveData = { title, bin, month, year, ccv, desc };
 
-  <!-- Android App Download Popup -->
-  <div id="android-download-popup" class="android-download-popup">
-    <div class="popup-content">
-      <button class="popup-close" onclick="closeAndroidDownloadPopup()">&times;</button>
-      <div class="popup-icon">
-        <svg class="android-icon" viewBox="0 0 24 24" width="80" height="80">
-          <path d="M6,18c0,0.55 0.45,1 1,1h1v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L11,19h2v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L16,19h1c0.55,0 1,-0.45 1,-1L18,8L6,8v10zM3.5,8C2.67,8 2,8.67 2,9.5v7c0,0.83 0.67,1.5 1.5,1.5S5,17.33 5,16.5v-7C5,8.67 4.33,8 3.5,8zM20.5,8c-0.83,0 -1.5,0.67 -1.5,1.5v7c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5v-7c0,-0.83 -0.67,-1.5 -1.5,-1.5zM15.53,2.16l1.3,-1.3c0.2,-0.2 0.2,-0.51 0,-0.71 -0.2,-0.2 -0.51,-0.2 -0.71,0l-1.48,1.48C13.85,1.23 12.95,1 12,1c-0.96,0 -1.86,0.23 -2.66,0.63L7.85,0.15c-0.2,-0.2 -0.51,-0.2 -0.71,0 -0.2,0.2 -0.2,0.51 0,0.71l1.31,1.31C6.97,3.26 6,5.01 6,7h12c0,-1.99 -0.97,-3.75 -2.47,-4.84zM10,5L9,5L9,4h1v1zM15,5h-1L14,4h1v1z"/>
-        </svg>
-      </div>
-      <h3>Download our Android app</h3>
-      <p>Get access to all the tools!</p>
-      <a href="https://www.mediafire.com/file/zol2kqrx5366yx3/namsogen.apk/file" class="download-app-button" id="download-app-link">
-        <i class="fab fa-android"></i> Download
-      </a>
-    </div>
-  </div>
+        let coll = JSON.parse(localStorage.getItem('binsave_data') || "[]");
+        const idx = document.getElementById('binsave-popup').dataset.editIndex;
+        if (idx !== '') {
+            // update
+            coll[Number(idx)] = binsaveData;
+        } else {
+            // create
+            coll.push(binsaveData);
+        }
+        localStorage.setItem('binsave_data', JSON.stringify(coll));
+        closeBinSavePopup();
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-links">
-          <h3 class="footer-heading">Site Links</h3>
-          <ul class="footer-nav">
-            <li><a href="luhn-algorithm.html" class="footer-link">Luhn Algorithm</a></li>
-            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
-            <li><a href="terms-of-use.html" class="footer-link">Terms of Use</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-legal">
-          <h3 class="footer-heading">Privacy & Cookies</h3>
-          <p class="footer-text">This site uses cookies to enhance your experience. All tools process data in your browser - we never store your sensitive information.</p>
-          <p class="copyright">&copy; 2025 namsogen.top - All rights reserved</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+        // redirect to Bin Save page after saving
+        window.location.href = "binsave.html";
+    });
 
-  <script src="js/script.js"></script>
-  <script type="module">
-    import ThemeManager from 'theme-manager';
-    const themeManager = new ThemeManager();
-    themeManager.init();
-
-    // Android Download Popup Script
-    function showAndroidDownloadPopup() {
-      const isAndroid = /Android/i.test(navigator.userAgent);
-      const hasSeenPopup = localStorage.getItem('androidDownloadPopupShown');
-      
-      const popup = document.getElementById('android-download-popup');
-      if (isAndroid && !hasSeenPopup) {
-        popup.classList.add('show');
-        localStorage.setItem('androidDownloadPopupShown', 'true');
-      }
+    function showErr(msg) {
+        let e = document.getElementById('binsave-error');
+        e.textContent = msg;
+        e.style.display = "";
     }
 
-    function closeAndroidDownloadPopup() {
-      const popup = document.getElementById('android-download-popup');
-      popup.classList.remove('show');
+    // Function to scroll to Download App section
+    function scrollToDownloadSection() {
+        const downloadSection = document.querySelector('.download-complete-app-section');
+        if (downloadSection) {
+            downloadSection.scrollIntoView({ behavior: 'smooth' });
+        }
     }
 
-    // Attach to window events
-    window.showAndroidDownloadPopup = showAndroidDownloadPopup;
-    window.closeAndroidDownloadPopup = closeAndroidDownloadPopup;
+    // Mobile App Download Popup Logic
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if the user is on Android mobile
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        const hasSeenDownloadPopup = localStorage.getItem('mobile_app_download_popup_seen');
 
-    // Show popup on page load
-    document.addEventListener('DOMContentLoaded', showAndroidDownloadPopup);
-  </script>
-  <div class="telegram-float-button animate__animated animate__bounceInUp">
-    <a href="https://t.me/namsogengroup" target="_blank" aria-label="Join Telegram Group">
-      <i class="fab fa-telegram"></i>
-    </a>
-  </div>
+        if (isAndroid && !hasSeenDownloadPopup) {
+            setTimeout(() => {
+                showMobileAppDownloadPopup();
+            }, 2000); // Show popup after 2 seconds
+        }
+    });
+
+    function showMobileAppDownloadPopup() {
+        const popup = document.getElementById('mobile-app-download-popup');
+        popup.style.display = 'flex';
+    }
+
+    function closeMobileAppDownloadPopup() {
+        const popup = document.getElementById('mobile-app-download-popup');
+        popup.style.display = 'none';
+    }
+
+    function downloadApp() {
+        // Replace with actual app download link
+        window.location.href = "https://www.mediafire.com/file/zol2kqrx5366yx3/namsogen.apk/file"; // APK download link
+        markAsDownloaded();
+    }
+
+    function markAsDownloaded() {
+        localStorage.setItem('mobile_app_download_popup_seen', 'true');
+        closeMobileAppDownloadPopup();
+    }
+    </script>
 </body>
 </html>

@@ -1,87 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy - Namsogen</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="light-theme">
-  <header class="site-header">
-    <div class="logo-container">
-      <a href="index.html" class="logo">
-        <svg class="android-icon" viewBox="0 0 24 24" width="40" height="40">
-          <path d="M6,18c0,0.55 0.45,1 1,1h1v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L11,19h2v3.5c0,0.83 0.67,1.5 1.5,1.5s1.5,-0.67 1.5,-1.5L16,19h1c0.55,0 1,-0.45 1,-1L18,8L6,8v10z"/>
-        </svg>
-        Baixe o App
-      </a>
-    </div>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-      <i class="fas fa-sun light-icon"></i>
-      <i class="fas fa-moon dark-icon"></i>
-    </button>
-  </header>
-
-  <main class="container">
-    <section class="content-article">
-      <h1>Privacy Policy</h1>
-      
-      <h2>1. Information Collection and Use</h2>
-      <p>Namsogen is committed to protecting your privacy. Our web tools process all data directly in your browser without storing or transmitting any personal information.</p>
-      
-      <h2>2. Data Processing</h2>
-      <p>All tool functionalities, including credit card generation, run entirely client-side using JavaScript. No data is sent to or stored on our servers.</p>
-      
-      <h2>3. Cookies and Local Storage</h2>
-      <p>We use browser local storage and cookies solely to:</p>
-      <ul class="feature-list">
-        <li>Remember user theme preferences</li>
-        <li>Manage app download popup settings</li>
-        <li>Enhance user experience</li>
-      </ul>
-      
-      <h2>4. Third-Party Services</h2>
-      <p>We may use third-party services for:</p>
-      <ul class="feature-list">
-        <li>Content delivery</li>
-        <li>Performance monitoring</li>
-        <li>Advertisement serving</li>
-      </ul>
-      
-      <h2>5. User Consent</h2>
-      <p>By using Namsogen, you consent to our privacy practices. We do not collect, sell, or share personal data.</p>
-      
-      <div class="disclaimer">
-        <h3>Last Updated: December 2023</h3>
-        <p>This privacy policy may be updated periodically. Users are encouraged to review it regularly.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-links">
-          <h3 class="footer-heading">Site Links</h3>
-          <ul class="footer-nav">
-            <li><a href="luhn-algorithm.html" class="footer-link">Luhn Algorithm</a></li>
-            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
-            <li><a href="terms-of-use.html" class="footer-link">Terms of Use</a></li>
-          </ul>
-        </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - File Encryptor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .policy-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--card-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
         
-        <div class="footer-legal">
-          <p class="copyright">&copy; 2023 namsogen.top - All rights reserved</p>
-        </div>
-      </div>
+        .policy-container h2 {
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .policy-container p, .policy-container ul {
+            margin-bottom: 15px;
+        }
+        
+        .policy-container ul {
+            padding-left: 20px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-link i {
+            margin-right: 8px;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .app-download-section {
+            /* Add styles for app-download-section here if needed */
+        }
+        
+        .menu-icon {
+            /* Add styles for menu-icon here if needed */
+        }
+        
+        .dropdown-menu {
+            /* Add styles for dropdown-menu here if needed */
+        }
+        
+        .download-option {
+            /* Add styles for download-option here if needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-shield-alt"></i> File Encryptor</h1>
+            <p class="subtitle">Privacy Policy</p>
+            <div class="app-download-section">
+                <button class="menu-icon" id="downloadMenuBtn"><i class="fas fa-bars"></i></button>
+                <div class="dropdown-menu" id="downloadMenu">
+                    <h3><i class="fas fa-download"></i> Download App</h3>
+                    <a href="https://www.mediafire.com/file/zol2kqrx5366yx3/namsogen.apk/file" class="download-option"><i class="fas fa-download"></i> Download app APK</a>
+                    <a href="namso-gen.html" class="download-option"><i class="fas fa-credit-card"></i> Namso Generator</a>
+                    <a href="index.html" class="download-option"><i class="fas fa-shield-alt"></i> File Encryptor</a>
+                    <a href="binsave.html" class="download-option"><i class="fas fa-database"></i> Bin Save</a>
+                    <a href="#" class="download-option"><i class="fab fa-telegram"></i> Telegram Group</a>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            
+            <div class="policy-container">
+                <h2>Privacy Policy</h2>
+                <p>Your privacy is important to us. This Privacy Policy explains how File Encryptor, Namso Gen, and Bin Save handle your information.</p>
+                
+                <h2>1. Information Collection</h2>
+                <p>Our suite of tools - File Encryptor, Namso Gen, and Bin Save - processes all data locally in your browser. We prioritize your privacy by ensuring that no personal data is collected, stored, or transmitted to our servers.</p>
+                
+                <h2>2. Local Storage</h2>
+                <p>We may use browser local storage for temporary, non-sensitive application settings across our tools. This storage is strictly limited to enhancing user experience and does not store personal or sensitive information.</p>
+                
+                <h2>3. Third-Party Services</h2>
+                <p>We use the following third-party services, adhering to their respective privacy policies:</p>
+                <ul>
+                    <li>CryptoJS: For secure encryption/decryption functions</li>
+                    <li>Font Awesome: For interface icons</li>
+                    <li>CloudFlare CDN: For delivering static resources</li>
+                </ul>
+                
+                <h2>4. Specific Tool Privacy</h2>
+                <h3>File Encryptor</h3>
+                <p>Encrypts and decrypts files entirely in the browser with zero server-side data transmission.</p>
+                
+                <h3>Namso Gen</h3>
+                <p>Generates test credit card numbers for development and testing purposes. No real financial data is stored or transmitted.</p>
+                
+                <h3>Bin Save</h3>
+                <p>Allows local storage of BIN (Bank Identification Number) information in the browser's local storage. Data is private and not shared externally.</p>
+                
+                <h2>5. Security Commitment</h2>
+                <p>We implement state-of-the-art encryption technologies to protect your data across all our tools. However, we recommend users maintain their own data backups and follow best security practices.</p>
+                
+                <h2>6. Children's Privacy</h2>
+                <p>Our services are designed for users 13 years and older. We do not intentionally collect or maintain data from individuals under 13.</p>
+                
+                <h2>7. International Users</h2>
+                <p>Our services comply with international data protection regulations, including GDPR and CCPA principles.</p>
+                
+                <h2>8. Policy Updates</h2>
+                <p>We continuously update our privacy practices. Users are encouraged to review this policy periodically for any changes.</p>
+                
+                <h2>9. Contact Information</h2>
+                <p>For privacy-related inquiries, please contact us at contactapp.mega@gmail.com.</p>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="terms-of-use.html">Terms of Use</a>
+                <span class="separator">|</span>
+                <a href="index.html">Home</a>
+            </div>
+            <p class="copyright">&copy; 2025 File Encryptor. All rights reserved.</p>
+        </footer>
     </div>
-  </footer>
-
-  <script type="module">
-    import ThemeManager from './js/theme-manager.js';
-    const themeManager = new ThemeManager();
-    themeManager.init();
-  </script>
 </body>
 </html>
