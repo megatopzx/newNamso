@@ -154,7 +154,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function handleDecryptFiles(files) {
         if (files.length > 0) {
-            decryptFileName.textContent = `Selected: ${files[0].name}`;
             checkDecryptEnabled();
         }
     }
@@ -194,8 +193,26 @@ document.addEventListener('DOMContentLoaded', function() {
         encryptButton.disabled = !(hasFile && hasPassword && passwordsMatch);
     }
 
+    decryptPassword.addEventListener('input', checkDecryptEnabled);
+    decryptFileInput.addEventListener('input', checkDecryptEnabled);
+
     function checkDecryptEnabled() {
-        decryptButton.disabled = !(decryptFileInput.files.length > 0 && decryptPassword.value.trim() !== '');
+        const file = decryptFileInput.files[0];
+        const password = decryptPassword.value.trim();
+        const isValidExtension = file && file.name.toLowerCase().endsWith('.encsi');
+        
+        decryptButton.disabled = !(file && password && isValidExtension);
+
+        // Add visual feedback for invalid extension
+        if (file && !isValidExtension) {
+            decryptFileName.innerHTML = `
+                <span style="color: var(--danger-color)">
+                    <i class="fas fa-exclamation-triangle"></i> Invalid file. Use .encSI extension
+                </span>
+            `;
+        } else if (file) {
+            decryptFileName.textContent = `Selected: ${file.name}`;
+        }
     }
     
     // Encryption and decryption
@@ -235,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     downloadBtn.classList.add('action-button', 'download-btn');
                     downloadBtn.addEventListener('click', () => {
                         // Use .enc extension
-                        downloadFile(`${file.name}.enc`, encrypted);
+                        downloadFile(`${file.name}.encSi`, encrypted);
                     });
                     
                     // Append download button to status
@@ -317,10 +334,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     const wordArray = decrypted;
                     const arrayBuffer = wordArrayToArrayBuffer(wordArray);
                     
-                    // Create original filename (remove .enc extension if present)
+                    // Create original filename (remove .encSi extension)
                     let originalName = file.name;
-                    if (originalName.endsWith('.enc')) {
-                        originalName = originalName.substring(0, originalName.length - 4);
+                    if (originalName.toLowerCase().endsWith('.encsi')) {
+                        originalName = originalName.slice(0, -6); // Remove .encSi
                     }
                     
                     // Hide animation
