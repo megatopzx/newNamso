@@ -24,7 +24,12 @@
     <!-- Existing Head Content -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="namso-gen.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+      var fa = document.createElement('link');
+      fa.rel = 'stylesheet';
+      fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+      document.head.appendChild(fa);
+    </script>
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-EN0DRPF9Q7"
